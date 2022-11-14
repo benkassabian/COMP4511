@@ -1,12 +1,18 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
-import styles from "./styles";
+import { ImageBackground } from "react-native";
+import { NativeBaseProvider, Text, Box, Button } from "native-base";
+
+import styles from "./src/styles/global";
+import theme from "./src/styles/theme";
+import background from "./assets/background.png";
+import LandingPage from "./src/pages/LandingPage";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={theme}>
+      <ImageBackground style={styles.container} source={background}>
+        <LandingPage />
+      </ImageBackground>
+    </NativeBaseProvider>
   );
 }
