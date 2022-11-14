@@ -13,7 +13,7 @@ const LandingPage = () => {
         style={{ width: "200px" }}
       >
         <Button
-          style={{ width: "400px" }}
+          style={{ width: "400 px" }}
           variant={"solid"}
           size="lg"
           colorScheme="primary"
