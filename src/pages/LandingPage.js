@@ -1,6 +1,5 @@
 import { Box, Heading, Button, Stack, Center, VStack} from "native-base";
 import Logo from "../components/Logo";
-import styles from "../styles/global";
 
 const LandingPage = () => {
   return <Center w="100%">
