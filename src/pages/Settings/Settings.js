@@ -22,20 +22,7 @@ import React, { Children, useState } from "react";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import Header from "../../components/Header";
-
-const MenuItem = ({ children, onClick }) => {
-  return (
-    <HStack
-      flex={1}
-      justifyContent="space-between"
-      alignItems="center"
-      paddingY="3"
-      onTouchEnd={onClick}
-    >
-      {children.map((child) => child)}
-    </HStack>
-  );
-};
+import MenuItem from "../../components/SettingsMenuItem";
 
 export default function Settings({ navigation }) {
   const [isLogout, setLogout] = useState(false);
@@ -46,7 +33,7 @@ export default function Settings({ navigation }) {
         fontSize: "xl",
       }}
     >
-      <Header heading="Settings" navigation={navigation} />
+      <Header heading="Settings" />
       <VStack width="100%" divider={<Divider />}>
         <MenuItem onClick={() => navigation.navigate("AccountSettings")}>
           <MaterialIcon name="person-outline" size={30} />

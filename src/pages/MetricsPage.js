@@ -2,8 +2,10 @@ import { Box, Center, Heading, Text } from "native-base";
 import React from "react";
 import { View } from "react-native";
 import { BarChart, LineChart } from "react-native-chart-kit";
+import Header from "../components/Header";
+import styles from "../styles/global";
 
-export default function MetricsPage() {
+export default function MetricsPage({ navigation }) {
   const linedata = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -36,7 +38,7 @@ export default function MetricsPage() {
 
   return (
     <Center style={styles.container}>
-      <Header heading={"Metrics"} navigation={navigation} />
+      <Header heading={"Metrics"} />
       <Box safeArea p="2" h="100%" w="90%" maxW="320">
         <View>
           <Text fontWeight="semibold">Daily Water Usage Distribution</Text>

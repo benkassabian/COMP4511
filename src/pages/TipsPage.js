@@ -40,7 +40,7 @@ export default function TipsPage({ navigation }) {
   }, [refreshing]);
 
   return (
-    <Center h="97e%" w="100%">
+    <Center h="97%" w="100%">
       <Box safeArea p="2" h="100%" w="90%" maxW="320">
         <Center>
           <Header heading={"Tips"} navigation={navigation} />

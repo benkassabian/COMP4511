@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   },
   container: {
     position: "relative",
-    // margin: "5%",
     padding: "5%",
     flex: 1,
     height: height,
@@ -35,8 +34,6 @@ const styles = StyleSheet.create({
     width: "80vw",
   },
   avatar: {
-    height: 140,
-    width: 140,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -50,13 +47,6 @@ const styles = StyleSheet.create({
     height: 170,
     width: 170,
   },
-  profileHeader: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
   shadow: {
     shadowColor: "#8888D7",
     shadowOffset: {

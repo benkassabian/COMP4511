@@ -8,8 +8,8 @@ const ProfileAvatar = ({ size }) => {
   return (
     <Avatar
       style={styles.avatar}
+      size={size || "xl"}
       alignSelf="center"
-      size={size || "2xl"}
       source={{
         uri: avatar,
       }}
