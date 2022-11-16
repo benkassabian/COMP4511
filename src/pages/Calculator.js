@@ -1,8 +1,6 @@
 import {Alert, Image, View, Center, Box, Heading, FormControl, Input, Link, Button, Text, VStack, HStack } from "native-base";
 import React, { useState } from 'react';
 
-
-
 export default function Calculator({ navigation }) {
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
@@ -10,7 +8,6 @@ export default function Calculator({ navigation }) {
     const [total, setTotal] = useState(number1 + number2 + number3);
     const [text, setText] = useState("initial text");
     //const onPressHandler = event => setText("Changed text");
-   
    
     function addTogether() {
         const newTotal = number1 + number2 + number3;
@@ -20,10 +17,6 @@ export default function Calculator({ navigation }) {
         //const onPressHandler = event => setText("Changed text");
         setText("Your Estimated Quarterly Water Bill Is: $" + newTotal);
     }
-
-   
-
-
 
   return <Center w="100%">
     <Box safeArea p="2" py="6" w="90%" maxW="290">
@@ -74,9 +67,6 @@ export default function Calculator({ navigation }) {
 
 
         <Text style = {{fontSize: 22 }} >{text}</Text>
-
-
-    
         
       </VStack>
     </Box>
