@@ -3,6 +3,8 @@ import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, An
 import { COLORS, SIZES } from '../components/theme';
 import data from '../components/QuizData';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Header from "../components/Header";
+import styles from "../styles/global";
 
 const Quiz = () => {
 
@@ -173,6 +175,9 @@ const Quiz = () => {
   })
   const renderProgressBar = () => {
     return (
+
+
+
       <View style={{
         width: '100%',
         height: 20,
@@ -196,6 +201,7 @@ const Quiz = () => {
 
 
   return (
+     
      <SafeAreaView style={{
        flex: 1
      }}>

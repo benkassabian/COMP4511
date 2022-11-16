@@ -3,9 +3,15 @@ import {
   SafeAreaView,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Center
 } from 'react-native';
 import update from 'immutability-helper';
+import Header from "../components/Header";
+import stylez from "../styles/global";
+
+
+
 
 
 const gameMatrix = [
@@ -88,7 +94,7 @@ const getWinner = (gameStage) => {
   return null;
 }
 
-const App = () => {
+const JumpingGame = ({ navigation }) => {
 
   const [gameStage, setGameStage] = useState(gameMatrix);
   const [turnSymbol, setTurnSymbol] = useState(X_SYMBOL);
@@ -114,7 +120,13 @@ const App = () => {
   }
 
   return (
+
+   
+
     <>
+    <Center>
+          <Header heading={"Tips"} navigation={navigation} />
+    </Center>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 32 }}>{!winnerSymbol && `It's  ${turnSymbol}'s turn`}</Text>
@@ -155,4 +167,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default JumpingGame;

@@ -64,7 +64,7 @@ const Home = ({ navigation }) => {
         <Tile name="Calculator" link="Calculator" navigation={navigation} />
         {/* <HStack space="lg"> */}
         <Tile name="Tips" link="Tips" navigation={navigation} />
-        <Tile name="Games" link="Home" navigation={navigation} />
+        <Tile name="Games" link="Games" navigation={navigation} />
       </Flex>
       {/* </VStack> */}
     </View>

@@ -1,5 +1,7 @@
 import {Alert, Image, View, Center, Box, Heading, FormControl, Input, Link, Button, Text, VStack, HStack } from "native-base";
 import React, { useState } from 'react';
+import Header from "../components/Header";
+import styles from "../styles/global";
 
 
 
@@ -10,17 +12,11 @@ export default function GameHomeScreen({ navigation }) {
 
 
 
-  return <Center w="100%">
-    <Button style={{ height: 100, width: 10, position: 'absolute',top:0, left:0,}} mt="2" colorScheme="indigo" size="lg" onPress={() => navigation.navigate('Home')}>
-    Play Quiz
-    </Button>
-    
+  return (
+  <Center style={styles.container}>
+    <Header heading={"Games"} navigation={navigation} />
     <Box  safeArea p="2" py="20" w="90%" maxW="290"  >
-      <Heading size="lg" fontWeight="600" color="black" _dark={{
-      color: "black"
-    }}>
-        GAMES
-      </Heading>
+    
       <Heading mt="1" _dark={{
       color: "black"
     }} color="black" fontWeight="medium" size="xs">
@@ -29,7 +25,7 @@ export default function GameHomeScreen({ navigation }) {
 
       <VStack space={10} mt="5" style={{ paddingVertical: 30}} >
         
-        <Button style={{ height: 100}}  mt="2" colorScheme="indigo" size="lg">
+        <Button style={{ height: 100}}  mt="2" colorScheme="indigo" size="lg" onPress={() => navigation.navigate('JumpingGame')}>
           Water Jump
         </Button>
 
@@ -75,9 +71,9 @@ export default function GameHomeScreen({ navigation }) {
 
 
 
-  </Center>;
+  </Center>
 
 
-
+  );
 
 };

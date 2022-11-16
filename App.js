@@ -25,6 +25,7 @@ import CalculatorSettings from "./src/pages/Settings/Calculator";
 import { ViewBase } from "react-native";
 import NavBar from "./src/components/NavigationPanel";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import GameHomeScreen from "./src/pages/GameHomeScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -92,6 +93,7 @@ export default function App() {
           <Stack.Screen name="HomePage" component={HomePage} />
           <Tab.Screen name="Calculator" component={Calculator} />
           <Tab.Screen name="JumpingGame" component={JumpingGame} />
+          <Tab.Screen name="Games" component={GameHomeScreen} />
           <Tab.Screen name="Quiz" component={Quiz} />
           <Tab.Screen name="Tips" component={TipsPage} />
           <Tab.Screen name="AccountSettings" component={AccountSettings} />
