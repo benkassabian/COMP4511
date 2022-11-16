@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Link, HStack, VStack, Input, Button, Center, CloseIcon} from "native-base";
+import { Box, Heading, Text, Link, HStack, VStack, Input, Button, Center } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
 
