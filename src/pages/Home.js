@@ -1,36 +1,23 @@
 // TO DO: SARAH
 import {
   Box,
-  Heading,
   Text,
-  Link,
   HStack,
   VStack,
-  Input,
-  Button,
-  Center,
   View,
   Image,
   Pressable,
-  Stack,
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
-import Avatar from "../components/Avatar";
-import styles from "../styles/global";
 import ProfileAvatar from "../components/Avatar";
+import styles from "../styles/global";
 import tileIcons from "../utils/homepageIcons.json";
 
-const Tile = ({ navigation, name, link }) => {
+const Tile = ({ name, link, navigation }) => {
   return (
     <Box alignItems="center" my="3">
-      <Pressable
-        // cursor="pointer"
-        onPress={() => navigation.navigate('LandingPage')} 
-        // py="3"
-        // flex={1}
-        // onPress={() => setSelected(0)}
-      >
+      <Pressable onPress={() => navigation.navigate(link)}>
         {({ isHovered, isFocused, isPressed }) => (
           <Image
             opacity={isPressed ? 0.8 : 1}
@@ -48,9 +35,11 @@ const Tile = ({ navigation, name, link }) => {
 const ProfileHeader = () => {
   return (
     <HStack style={styles.profileHeader}>
+      <VStack>
       <Text fontSize="4xl" semibold>
         Welcome!
       </Text>
+      </VStack>
       <ProfileAvatar />
     </HStack>
   );
@@ -62,16 +51,16 @@ const Home = ({ navigation }) => {
       <VStack>
         <ProfileHeader />
         <HStack space="lg">
-          <Tile name="Shower Timer" />
-          <Tile name="Logbook" />
+          <Tile name="Shower Timer" link="Home" navigation={navigation}/>
+          <Tile name="Logbook" link="Home" navigation={navigation}/>
         </HStack>
         <HStack space="lg">
-          <Tile name="Challenges" />
-          <Tile name="Calculator" />
+          <Tile name="Challenges" link="Home" navigation={navigation}/>
+          <Tile name="Calculator" link="Calculator" navigation={navigation}/>
         </HStack>
         <HStack space="lg">
-          <Tile name="Tips" />
-          <Tile name="Games" />
+          <Tile name="Tips" link="Home" navigation={navigation}/>
+          <Tile name="Games" link="Home" navigation={navigation}/>
         </HStack>
       </VStack>
     </View>
