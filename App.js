@@ -41,6 +41,7 @@ const MyStack = () => {
         <Stack.Screen name="LandingPage" component={LandingPage}/>
         <Stack.Screen name="SignUpPage" component={SignUpPage}/>
         <Stack.Screen name="LoginPage" component={LoginPage} />
+        <Stack.Screen name="Quiz" component={LoginPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -8,7 +8,7 @@ export default function LoginPage({ navigation }) {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  return <Center w="100%" height="100%">
+  return <Center w="100%" h="100%">
     <Box safeArea p="2" w="90%" maxW="320">
       <Center>
         <Pressable onPress={() => navigation.navigate('LandingPage')}><Logo /></Pressable>
