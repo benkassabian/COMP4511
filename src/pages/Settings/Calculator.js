@@ -11,7 +11,6 @@ import {
   Button,
   Text,
   VStack,
-  HStack,
   Menu,
   Divider,
   Flex,
@@ -20,9 +19,7 @@ import {
 
 import styles from "../../styles/global";
 import React, { Children, useEffect, useState } from "react";
-import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
-import { AsyncStorage } from "react-native";
 import { getData, storeData } from "../../utils/store";
 import Header from "../../components/Header";
 import MenuItem from "../../components/SettingsMenuItem";

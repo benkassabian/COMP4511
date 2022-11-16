@@ -1,8 +1,9 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { NativeBaseProvider } from "native-base";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import styles from "./src/styles/global";
 import theme from "./src/styles/theme";
@@ -18,44 +19,88 @@ import JumpingGame from "./src/pages/JumpingGame";
 import Calculator from "./src/pages/Calculator";
 import TipsPage from "./src/pages/TipsPage";
 import MetricsPage from "./src/pages/MetricsPage";
-import NavBar from "./src/components/NavBar";
 import Settings from "./src/pages/Settings/Settings";
 import AccountSettings from "./src/pages/Settings/Account";
 import CalculatorSettings from "./src/pages/Settings/Calculator";
 import { ViewBase } from "react-native";
+import NavBar from "./src/components/NavigationPanel";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const MyStack = () => {
+const HomePage = () => {
   return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="LandingPage" component={LandingPage} />
-        <Stack.Screen name="SignUpPage" component={SignUpPage} />
-        <Stack.Screen name="LoginPage" component={LoginPage} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Calculator" component={Calculator} />
-        <Stack.Screen name="JumpingGame" component={JumpingGame} />
-        <Stack.Screen name="Quiz" component={Quiz} />
-        <Stack.Screen name="Tips" component={TipsPage} />
-        <Stack.Screen name="Metrics" component={MetricsPage} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="AccountSettings" component={AccountSettings} />
-        <Stack.Screen
-          name="CalculatorSettings"
-          component={CalculatorSettings}
-        />
-      </Stack.Navigator>
-      {/* <NavBar /> */}
-    </NavigationContainer>
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: "#8888D7",
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="settings" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Metrics"
+        component={MetricsPage}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons
+              name="insert-chart-outlined"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="person-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
 export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
-      <MyStack />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="LandingPage" component={LandingPage} />
+          <Stack.Screen name="SignUpPage" component={SignUpPage} />
+          <Stack.Screen name="LoginPage" component={LoginPage} />
+          <Stack.Screen name="HomePage" component={HomePage} />
+          <Tab.Screen name="Calculator" component={Calculator} />
+          <Tab.Screen name="JumpingGame" component={JumpingGame} />
+          <Tab.Screen name="Quiz" component={Quiz} />
+          <Tab.Screen name="Tips" component={TipsPage} />
+          <Tab.Screen name="AccountSettings" component={AccountSettings} />
+          <Tab.Screen
+            name="CalculatorSettings"
+            component={CalculatorSettings}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

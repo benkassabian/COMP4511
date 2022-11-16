@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box, Heading, Text, Center, FlatList } from "native-base";
+import styles from "../styles/global";
+import Header from "../components/Header";
 
-export default function TipsPage() {
+export default function TipsPage({ navigation }) {
   const tips = [
     "Brush your teeth with the tap off  😁",
     "Time your showers and challenge yourself to take a minute off  ⏱️",
@@ -39,48 +41,41 @@ export default function TipsPage() {
   }, [refreshing]);
 
   return (
-    <Center h="92%" w="100%">
-      <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <Center marginBottom="50px" marginTop="20px">
-          <Heading
-            mt="0"
-            size="xl"
-            color="coolGray.800"
-            _dark={{ color: "warmGray.50" }}
-            fontWeight="semibold"
-          >
-            Tips
-          </Heading>
-        </Center>
-        <FlatList
-          data={shuffledTips.splice(0, 5)}
-          numColumns={1}
-          renderItem={({ item, index }) => {
-            return (
-              <Center
-                key={index}
-                h="76"
-                minWidth="100%"
-                bg="#FCFCFF"
-                rounded="md"
-                borderWidth="1"
-                borderColor="gray.400"
-                padding="10px"
-                marginBottom="15px"
-              >
-                <Text textAlign="center" fontSize="16.5">
-                  {item}
-                </Text>
-              </Center>
-            );
-          }}
-          refreshing={refreshing}
-          onRefresh={() => setRefreshing(true)}
-        />
-        <Text textAlign="center" fontSize="22" color="#37CDDD" fontWeight="semibold">
-          Refresh to see new tips!
-        </Text>
-      </Box>
+    <Center style={styles.container}>
+      <Header heading="Tips" navigation={navigation} />
+      <FlatList
+        data={shuffledTips.splice(0, 5)}
+        numColumns={1}
+        renderItem={({ item, index }) => {
+          return (
+            <Center
+              key={index}
+              h="76"
+              minWidth="100%"
+              bg="#FCFCFF"
+              rounded="md"
+              borderWidth="1"
+              borderColor="gray.400"
+              padding="10px"
+              marginBottom="15px"
+            >
+              <Text textAlign="center" fontSize="16.5">
+                {item}
+              </Text>
+            </Center>
+          );
+        }}
+        refreshing={refreshing}
+        onRefresh={() => setRefreshing(true)}
+      />
+      <Text
+        textAlign="center"
+        fontSize="22"
+        color="#37CDDD"
+        fontWeight="semibold"
+      >
+        Refresh to see new tips!
+      </Text>
     </Center>
   );
 }

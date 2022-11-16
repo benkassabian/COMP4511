@@ -8,6 +8,7 @@ import {
   Image,
   Pressable,
   Heading,
+  Flex,
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
@@ -17,7 +18,7 @@ import tileIcons from "../utils/homepageIcons.json";
 
 const Tile = ({ name, link, navigation }) => {
   return (
-    <Box alignItems="center" my="3">
+    <Box alignItems="center" margin="3" flexBasis="40%">
       <Pressable onPress={() => navigation.navigate(link)}>
         {({ isHovered, isFocused, isPressed }) => (
           <Image
@@ -35,12 +36,10 @@ const Tile = ({ name, link, navigation }) => {
 
 const ProfileHeader = () => {
   return (
-    <HStack style={styles.profileHeader}>
-      <VStack>
-        <Heading fontSize="2xl" fontWeight="thin">
-          Welcome!
-        </Heading>
-      </VStack>
+    <HStack justifyContent="space-around" alignItems="center" width="100%">
+      <Heading fontSize="4xl" fontWeight="thin">
+        Welcome!
+      </Heading>
       <ProfileAvatar />
     </HStack>
   );
@@ -49,21 +48,25 @@ const ProfileHeader = () => {
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <VStack>
-        <ProfileHeader />
-        <HStack space="lg">
-          <Tile name="Shower Timer" link="Home" navigation={navigation} />
-          <Tile name="Logbook" link="Home" navigation={navigation} />
-        </HStack>
-        <HStack space="lg">
-          <Tile name="Challenges" link="Home" navigation={navigation} />
-          <Tile name="Calculator" link="Calculator" navigation={navigation} />
-        </HStack>
-        <HStack space="lg">
-          <Tile name="Tips" link="Tips" navigation={navigation} />
-          <Tile name="Games" link="Home" navigation={navigation} />
-        </HStack>
-      </VStack>
+      {/* <VStack> */}
+      <ProfileHeader />
+      <Flex
+        flexWrap="wrap"
+        flexDirection="row"
+        width="100%"
+        justifyContent="space-around"
+        alignItems={"center"}
+      >
+        <Tile name="Shower Timer" link="Home" navigation={navigation} />
+        <Tile name="Logbook" link="Home" navigation={navigation} />
+        {/* <HStack space="lg"> */}
+        <Tile name="Challenges" link="Home" navigation={navigation} />
+        <Tile name="Calculator" link="Calculator" navigation={navigation} />
+        {/* <HStack space="lg"> */}
+        <Tile name="Tips" link="Tips" navigation={navigation} />
+        <Tile name="Games" link="Home" navigation={navigation} />
+      </Flex>
+      {/* </VStack> */}
     </View>
   );
 };

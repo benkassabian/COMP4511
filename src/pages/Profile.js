@@ -18,7 +18,7 @@ import Logo from "../components/Logo";
 import React from "react";
 import styles from "../styles/global";
 import ProfileAvatar from "../components/Avatar";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavigationPanel";
 
 const ProfileTile = ({ number, text }) => {
   return (
