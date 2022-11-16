@@ -14,7 +14,6 @@ import {
   HStack,
 } from "native-base";
 import React, { useState } from "react";
-import BackButton from "../components/BackButton";
 import Header from "../components/Header";
 import styles from "../styles/global";
 

@@ -34,18 +34,18 @@ const MyStack = () => {
         <Stack.Screen name="SignUpPage" component={SignUpPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="AccountSettings" component={AccountSettings} />
-        <Stack.Screen
-          name="CalculatorSettings"
-          component={CalculatorSettings}
-        />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Calculator" component={Calculator} />
         <Stack.Screen name="JumpingGame" component={JumpingGame} />
         <Stack.Screen name="Quiz" component={Quiz} />
         <Stack.Screen name="Tips" component={TipsPage} />
         <Stack.Screen name="Metrics" component={MetricsPage} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="AccountSettings" component={AccountSettings} />
+        <Stack.Screen
+          name="CalculatorSettings"
+          component={CalculatorSettings}
+        />
       </Stack.Navigator>
       {/* <NavBar /> */}
     </NavigationContainer>

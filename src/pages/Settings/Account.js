@@ -3,7 +3,6 @@ import { Center, Heading, Input, Button, VStack } from "native-base";
 import styles from "../../styles/global";
 import React, { Children, useEffect, useState } from "react";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import BackButton from "../../components/BackButton";
 import Header from "../../components/Header";
 
 export default function AccountSettings({ navigation }) {
@@ -13,7 +12,11 @@ export default function AccountSettings({ navigation }) {
 
   return (
     <Center style={styles.container}>
-      <Header heading={"Account Settings"} />
+      <Header
+        heading={"Account Settings"}
+        navigation={navigation}
+        link="Settings"
+      />
       <VStack width="100%" space={5}>
         <Input
           size="md"

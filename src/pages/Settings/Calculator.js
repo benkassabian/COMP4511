@@ -24,6 +24,7 @@ import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import { AsyncStorage } from "react-native";
 import { getData, storeData } from "../../utils/store";
+import Header from "../../components/Header";
 
 const MenuItem = ({ children }) => {
   return (
@@ -39,7 +40,7 @@ const MenuItem = ({ children }) => {
   );
 };
 
-export default function CalculatorSettings() {
+export default function CalculatorSettings({ navigation }) {
   const [isCustom, setIsCustom] = useState(undefined);
 
   useEffect(() => {
@@ -60,10 +61,7 @@ export default function CalculatorSettings() {
 
   return (
     <Center style={styles.container}>
-      <BackButton />
-      <Heading size="xl" fontWeight="thin" paddingY={5}>
-        Calculator Settings
-      </Heading>
+      <Header heading="Calculator" navigation={navigation} link="Settings" />
       <VStack width="100%" divider={<Divider />} space={5}>
         <MenuItem>
           <FeatherIcon name="droplet" size={30} />
