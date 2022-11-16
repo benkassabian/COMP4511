@@ -14,18 +14,13 @@ import Bird from "./src/components/Bird";
 import Quiz from "./src/pages/Quiz";
 import Calculator from "./src/pages/Calculator";
 
-
-
-// import * as React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 // export default function App() {
 //   return (
 //     <NativeBaseProvider theme={theme}>
 //       <ImageBackground style={styles.container} source={background}>
-//         {/* <LandingPage /> */}
-//         <SignUpPage />
+//         <LandingPage />
+//         {/* <SignUpPage /> */}
+//         {/* <Quiz /> */}
 //         {/* <LoginPage /> */}
 //         {/* <NavBar /> */}
 //       </ImageBackground>
