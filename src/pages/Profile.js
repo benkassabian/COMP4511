@@ -33,7 +33,6 @@ const ProfileTile = ({ number, text }) => {
         {number}
       </Text>
       <Text color="secondary" fontSize="sm" textAlign="center">
-        {" "}
         {text}
       </Text>
     </Center>
