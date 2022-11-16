@@ -36,7 +36,7 @@ const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="LandingPage" component={LandingPage}/>
         <Stack.Screen name="SignUpPage" component={SignUpPage}/>
@@ -46,6 +46,7 @@ const MyStack = () => {
     </NavigationContainer>
   );
 };
+
 
 export default function App() {
   return (

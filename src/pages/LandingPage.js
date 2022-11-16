@@ -3,7 +3,7 @@ import Logo from "../components/Logo";
 
 const LandingPage = ({ navigation }) => {
   return <Center w="100%" h="100%">
-     <Box safeArea p="2" w="90%" maxW="300">
+     <Box safeArea p="2" w="90%" maxW="320">
       <Center>
         <Pressable onPress={() => navigation.navigate('LandingPage')}><Logo /></Pressable>
         <Heading mt="6" size="xl" color="coolGray.800" _dark={{ color: "warmGray.50" }} fontWeight="semibold">
@@ -15,11 +15,11 @@ const LandingPage = ({ navigation }) => {
       <Image mt="6" source={require('../../assets/VirtualCharacter.png')} alt="Drip Detective Mascot"/>
       </Center>
       <VStack space={5} mt="12">
-        <Button mt="2" colorScheme="primary" onPress={() => navigation.navigate('LoginPage')}>
-          LOG IN
+        <Button size="lg" mt="2" colorScheme="primary" onPress={() => navigation.navigate('LoginPage')}>
+          Log In
         </Button>
-        <Button variant="outline" colorScheme="primary" onPress={() => navigation.navigate('SignUpPage')}>
-          SIGN UP
+        <Button size="lg" variant="outline" colorScheme="primary" onPress={() => navigation.navigate('SignUpPage')}>
+          Sign Up
         </Button>
       </VStack>
     </Box>

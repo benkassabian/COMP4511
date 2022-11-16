@@ -19,19 +19,19 @@ export default function SignUpPage({ navigation }) {
         </Heading>
       </Center>
       <VStack space={5} mt="12">
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Email" 
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="Email" 
           onChangeText={value => setData({ ...formData, email: value})}
         />
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Name"
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="Name"
           onChangeText={value => setData({ ...formData, name: value})}
         />         
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Password"
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" type="password" placeholder="Password"
           onChangeText={value => setData({ ...formData, password1: value})}
         />
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"
           onChangeText={value => setData({ ...formData, password2: value})}
         />
-        <Button mt="2">
+        <Button size="lg" mt="4">
           Sign Up
         </Button>
         <HStack mt="2" justifyContent="center">

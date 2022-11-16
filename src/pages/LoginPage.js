@@ -20,18 +20,18 @@ export default function LoginPage({ navigation }) {
         </Heading>
       </Center>
       <VStack space={5} mt="12">
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Email"/>
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Password"
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="Email"/>
+        <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="Password"
           type={show ? "text" : "password"} InputRightElement={<Button size="md" rounded="none" w="1/5" bg="coolGray.400" h="full" onPress={handleClick}>{show ? "Hide" : "Show"}</Button>}
         />
-        <Button mt="2">
+        <Button size="lg" mt="4">
           Log In
         </Button>
         <HStack mt="2" justifyContent="center">
-          <Text fontSize="sm" color="coolGray.600" _dark={{ color: "warmGray.200" }}>
+          <Text fontSize="md" color="coolGray.600" _dark={{ color: "warmGray.200" }}>
             I'm a new user.{" "}
           </Text>
-          <Link _text={{ color: "indigo.500", fontWeight: "medium", fontSize: "sm" }} onPress={() => navigation.navigate('SignUpPage')}>
+          <Link _text={{ color: "indigo.500", fontWeight: "medium", fontSize: "md" }} onPress={() => navigation.navigate('SignUpPage')}>
             Sign Up
           </Link>
         </HStack>
