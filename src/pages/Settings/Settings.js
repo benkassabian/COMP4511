@@ -24,7 +24,12 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 
 const MenuItem = ({ children }) => {
   return (
-    <HStack flex={1} justifyContent="space-between" alignItems="center">
+    <HStack
+      flex={1}
+      justifyContent="space-between"
+      alignItems="center"
+      paddingY="3"
+    >
       {children.map((child) => child)}
     </HStack>
   );
@@ -38,26 +43,26 @@ export default function Settings() {
         fontSize: "xl",
       }}
     >
-      <Heading size="xl" fontWeight="thin">
+      <Heading size="xl" fontWeight="thin" pb="5">
         Settings
       </Heading>
-      <VStack width="100%">
+      <VStack divider={<Divider />}>
         <MenuItem>
-          <MaterialIcon name="person-outline" size={25} />
+          <MaterialIcon name="person-outline" size={30} />
           <Text fontSize="xl">Account</Text>
-          <MaterialIcon name="chevron-right" size={25} />
+          <MaterialIcon name="chevron-right" size={30} />
         </MenuItem>
-        <Divider />
         <MenuItem>
-          <FeatherIcon name="droplet" size={25} />
+          <FeatherIcon name="droplet" size={30} />
           <Text fontSize="xl">Calculator</Text>
-          <MaterialIcon name="chevron-right" size={25} />
+          <MaterialIcon name="chevron-right" size={30} />
         </MenuItem>
-        <Divider />
         <MenuItem>
-          <MaterialIcon name="logout" size={25} />
-          <Text fontSize="xl">Logout</Text>
-          <MaterialIcon name="chevron-right" size={25} />
+          <MaterialIcon name="logout" size={30} color="red" />
+          <Text fontSize="xl" color="red.600">
+            Logout
+          </Text>
+          <MaterialIcon name="chevron-right" size={30} color="transparent" />
         </MenuItem>
       </VStack>
     </Flex>

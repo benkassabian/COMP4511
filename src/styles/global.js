@@ -9,8 +9,15 @@ const colors = {
 };
 
 const styles = StyleSheet.create({
+  backButton: {
+    position: "absolute",
+    left: "5%",
+    top: "5%",
+  },
   container: {
-    padding: "10%",
+    position: "relative",
+    // margin: "5%",
+    padding: "5%",
     flex: 1,
     height: height,
     width: width,
@@ -49,6 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+
   shadow: {
     shadowColor: "#8888D7",
     shadowOffset: {
