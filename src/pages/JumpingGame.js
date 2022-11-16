@@ -124,10 +124,11 @@ const JumpingGame = ({ navigation }) => {
    
 
     <>
-    <Center>
-          <Header heading={"JumpingGame"} navigation={navigation} />
-    </Center>
+    
       <SafeAreaView style={{ flex: 1 }}>
+        <Center>
+          <Header heading={"JumpingGame"} navigation={navigation} />
+        </Center>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 32 }}>{!winnerSymbol && `It's  ${turnSymbol}'s turn`}</Text>
           <Text style={{ fontSize: 32 }}>{winnerSymbol}</Text>

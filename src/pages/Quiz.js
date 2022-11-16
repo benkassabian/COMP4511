@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, Center } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated } from 'react-native'
+import {Alert, Center, Box, Heading, FormControl, Input, Link, Button, VStack, HStack } from "native-base";
+
 import { COLORS, SIZES } from '../components/theme';
 import data from '../components/QuizData';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -202,10 +204,17 @@ const Quiz = ({ navigation }) => {
 
   return (
     
+
+    
      
      <SafeAreaView style={{
        flex: 1
      }}>
+
+    <Center>
+          <Header heading={"Quiz"} navigation={navigation} />
+    </Center>
+
        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
        <View style={{
          flex: 1,
@@ -215,9 +224,7 @@ const Quiz = ({ navigation }) => {
          position:'relative'
        }}>
 
-    <Center>
-          <Header heading={"Quiz"} navigation={navigation} />
-    </Center>
+    
 
          {/* ProgressBar */}
          { renderProgressBar() }

@@ -66,7 +66,7 @@ export default function Calculator({ navigation }) {
             <FormControl.Label>Daily Water Usage In Kitchen</FormControl.Label>
             <Input
               type="number"
-              placeholder="0"
+              placeholder="0" 
               value={number2}
               onChange={(e) => {
                 setNumber2(Number.parseInt(e.nativeEvent.text)); // or get correct value from nativeEvent onChange

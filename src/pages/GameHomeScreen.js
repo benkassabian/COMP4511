@@ -14,14 +14,20 @@ export default function GameHomeScreen({ navigation }) {
 
   return (
   <Center style={styles.container}>
-    <Header heading={"Games"} navigation={navigation} />
+    
     <Box  safeArea p="2" py="20" w="90%" maxW="290"  >
     
-      <Heading mt="1" _dark={{
+      
+      <Center>
+          <Header heading={"Games"} navigation={navigation} />
+          <Heading mt="1" _dark={{
       color: "black"
     }} color="black" fontWeight="medium" size="xs">
         Enjoy A Game! 
       </Heading>
+        </Center>
+
+        
 
       <VStack space={10} mt="5" style={{ paddingVertical: 30}} >
         
