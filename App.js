@@ -13,9 +13,8 @@ import NavBar from "./src/components/NavBar";
 import Bird from "./src/components/Bird";
 import Quiz from "./src/pages/Quiz";
 import Calculator from "./src/pages/Calculator";
-
-
-
+import Profile from "./src/pages/Profile";
+import Home from "./src/pages/Home";
 // import * as React from 'react';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -33,19 +32,21 @@ import Calculator from "./src/pages/Calculator";
 //   );
 // }
 
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LandingPage" component={LandingPage}/>
-        <Stack.Screen name="SignUpPage" component={SignUpPage}/>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="LandingPage" component={LandingPage} />
+        <Stack.Screen name="SignUpPage" component={SignUpPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -54,11 +55,11 @@ const MyStack = () => {
 export default function App() {
   return (
     // <NavigationContainer>
-      <NativeBaseProvider theme={theme}>
-        {/* <ImageBackground style={styles.container} source={background}> */}
-          <MyStack />
-        {/* </ImageBackground> */}
-      </NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
+      {/* <ImageBackground style={styles.container} source={background}> */}
+      <MyStack />
+      {/* </ImageBackground> */}
+    </NativeBaseProvider>
     // </NavigationContainer>
   );
-};
+}

@@ -2,7 +2,6 @@ import { StyleSheet, Dimensions } from "react-native";
 
 var height = Dimensions.get("window").height;
 var width = Dimensions.get("window").width;
-console.log(height, width);
 
 const colors = {
   primary: "#8888D7",
@@ -11,11 +10,13 @@ const colors = {
 
 const styles = StyleSheet.create({
   container: {
+    padding: "10%",
     flex: 1,
     height: height,
     width: width,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "left",
+    overflow: "scroll",
   },
   logo: {
     display: "flex",
@@ -23,24 +24,39 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: width,
   },
-  h1: {
-    fontFamily: "Open Sans",
-    fontSize: "36px",
-    fontWeight: "300",
-    lineHeight: "49px",
-    letterSpacing: "0px",
-    textAlign: "left",
-  },
-  h2: {
-    fontFamily: "Open Sans",
-    fontSize: "36px",
-    fontWeight: "300",
-    lineHeight: "49px",
-    letterSpacing: "0px",
-    textAlign: "center",
-  },
   button: {
     width: "80vw",
+  },
+  avatar: {
+    height: 140,
+    width: 140,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
+  },
+  tile: {
+    borderRadius: 20,
+    backgroundColor: "grey",
+    height: 170,
+    width: 170,
+  },
+  profileHeader: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  shadow: {
+    shadowColor: "#8888D7",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.9,
+    shadowRadius: 10,
   },
 });
 
