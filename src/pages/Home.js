@@ -7,6 +7,7 @@ import {
   View,
   Image,
   Pressable,
+  Heading,
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
@@ -36,9 +37,9 @@ const ProfileHeader = () => {
   return (
     <HStack style={styles.profileHeader}>
       <VStack>
-      <Text fontSize="4xl" semibold>
-        Welcome!
-      </Text>
+        <Heading fontSize="2xl" fontWeight="thin">
+          Welcome!
+        </Heading>
       </VStack>
       <ProfileAvatar />
     </HStack>
@@ -51,16 +52,16 @@ const Home = ({ navigation }) => {
       <VStack>
         <ProfileHeader />
         <HStack space="lg">
-          <Tile name="Shower Timer" link="Home" navigation={navigation}/>
-          <Tile name="Logbook" link="Home" navigation={navigation}/>
+          <Tile name="Shower Timer" link="Home" navigation={navigation} />
+          <Tile name="Logbook" link="Home" navigation={navigation} />
         </HStack>
         <HStack space="lg">
-          <Tile name="Challenges" link="Home" navigation={navigation}/>
-          <Tile name="Calculator" link="Calculator" navigation={navigation}/>
+          <Tile name="Challenges" link="Home" navigation={navigation} />
+          <Tile name="Calculator" link="Calculator" navigation={navigation} />
         </HStack>
         <HStack space="lg">
-          <Tile name="Tips" link="Tips" navigation={navigation}/>
-          <Tile name="Games" link="Home" navigation={navigation}/>
+          <Tile name="Tips" link="Tips" navigation={navigation} />
+          <Tile name="Games" link="Home" navigation={navigation} />
         </HStack>
       </VStack>
     </View>

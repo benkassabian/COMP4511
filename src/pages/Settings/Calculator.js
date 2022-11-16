@@ -25,20 +25,7 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 import { AsyncStorage } from "react-native";
 import { getData, storeData } from "../../utils/store";
 import Header from "../../components/Header";
-
-const MenuItem = ({ children }) => {
-  return (
-    <HStack
-      flex={1}
-      justifyContent="space-between"
-      alignItems="center"
-      paddingY="3"
-      paddingX="5%"
-    >
-      {children.map((child) => child)}
-    </HStack>
-  );
-};
+import MenuItem from "../../components/SettingsMenuItem";
 
 export default function CalculatorSettings({ navigation }) {
   const [isCustom, setIsCustom] = useState(undefined);
