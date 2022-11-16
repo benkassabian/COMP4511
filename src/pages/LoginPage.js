@@ -1,6 +1,18 @@
-import { Pressable, Box, Heading, Text, Link, HStack, VStack, Input, Button, Center } from "native-base";
+import {
+  Pressable,
+  Box,
+  Heading,
+  Text,
+  Link,
+  HStack,
+  VStack,
+  Input,
+  Button,
+  Center,
+} from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
+import styles from "../styles/global";
 
 // https://docs.nativebase.io/login-signup-forms
 // https://docs.nativebase.io/form
@@ -8,7 +20,7 @@ export default function LoginPage({ navigation }) {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  return <Center w="100%" h="100%">
+  return <Center style={styles.container}>
     <Box safeArea p="2" w="90%" maxW="320">
       <Center>
         <Pressable onPress={() => navigation.navigate('LandingPage')}><Logo /></Pressable>

@@ -35,19 +35,9 @@ export default function MetricsPage() {
   };
 
   return (
-    <Center h="100%" w="100%">
+    <Center style={styles.container}>
+      <Header heading={"Metrics"} navigation={navigation} />
       <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <Center marginBottom="30px" marginTop="20px">
-          <Heading
-            mt="0"
-            size="xl"
-            color="coolGray.800"
-            _dark={{ color: "warmGray.50" }}
-            fontWeight="semibold"
-          >
-            Metrics
-          </Heading>
-        </Center>
         <View>
           <Text fontWeight="semibold">Daily Water Usage Distribution</Text>
           <Text>

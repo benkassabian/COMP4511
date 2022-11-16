@@ -1,8 +1,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import { StatusBar } from "expo-status-bar";
+import { View } from "react-native";
 import { NativeBaseProvider } from "native-base";
 
 import styles from "./src/styles/global";
@@ -17,7 +16,13 @@ import Profile from "./src/pages/Profile";
 import Quiz from "./src/pages/Quiz";
 import JumpingGame from "./src/pages/JumpingGame";
 import Calculator from "./src/pages/Calculator";
+import TipsPage from "./src/pages/TipsPage";
+import MetricsPage from "./src/pages/MetricsPage";
 import NavBar from "./src/components/NavBar";
+import Settings from "./src/pages/Settings/Settings";
+import AccountSettings from "./src/pages/Settings/Account";
+import CalculatorSettings from "./src/pages/Settings/Calculator";
+import { ViewBase } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,10 +35,19 @@ const MyStack = () => {
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Quiz" component={Quiz} />
-        <Stack.Screen name="JumpingGame" component={JumpingGame} />
         <Stack.Screen name="Calculator" component={Calculator} />
+        <Stack.Screen name="JumpingGame" component={JumpingGame} />
+        <Stack.Screen name="Quiz" component={Quiz} />
+        <Stack.Screen name="Tips" component={TipsPage} />
+        <Stack.Screen name="Metrics" component={MetricsPage} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="AccountSettings" component={AccountSettings} />
+        <Stack.Screen
+          name="CalculatorSettings"
+          component={CalculatorSettings}
+        />
       </Stack.Navigator>
+      {/* <NavBar /> */}
     </NavigationContainer>
   );
 };
