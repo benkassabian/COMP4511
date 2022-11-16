@@ -1,7 +1,7 @@
 import { Box, Heading, Button, Stack, Center, VStack} from "native-base";
 import Logo from "../components/Logo";
 
-const LandingPage = () => {
+const LandingPage = ({ navigation }) => {
   return <Center w="100%">
      <Box safeArea p="2" w="90%" maxW="300">
       <Center>
@@ -15,7 +15,7 @@ const LandingPage = () => {
       </Center>
       {/* TODO: insert mascot */}
       <VStack space={5} mt="12">
-        <Button mt="2" colorScheme="primary" >
+        <Button mt="2" colorScheme="primary" onPress={() => navigation.navigate('LoginPage')}>
           LOG IN
         </Button>
         <Button variant="outline" colorScheme="primary">
