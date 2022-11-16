@@ -59,7 +59,7 @@ const Home = ({ navigation }) => {
           <Tile name="Calculator" link="Calculator" navigation={navigation}/>
         </HStack>
         <HStack space="lg">
-          <Tile name="Tips" link="Home" navigation={navigation}/>
+          <Tile name="Tips" link="Tips" navigation={navigation}/>
           <Tile name="Games" link="Home" navigation={navigation}/>
         </HStack>
       </VStack>

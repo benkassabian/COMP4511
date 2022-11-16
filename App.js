@@ -17,6 +17,8 @@ import Profile from "./src/pages/Profile";
 import Quiz from "./src/pages/Quiz";
 import JumpingGame from "./src/pages/JumpingGame";
 import Calculator from "./src/pages/Calculator";
+import TipsPage from "./src/pages/TipsPage";
+import MetricsPage from "./src/pages/MetricsPage";
 import NavBar from "./src/components/NavBar";
 
 const Stack = createNativeStackNavigator();
@@ -33,7 +35,10 @@ const MyStack = () => {
         <Stack.Screen name="JumpingGame" component={JumpingGame} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Quiz" component={Quiz} />
+        <Stack.Screen name="Tips" component={TipsPage} />
+        <Stack.Screen name="Metrics" component={MetricsPage} />
       </Stack.Navigator>
+      <NavBar/>
     </NavigationContainer>
   );
 };
