@@ -1,166 +1,158 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableWithoutFeedback } from 'react-native';
-import Bird from "../components/Bird"
-import Obstacles from "../components/Obstacles"
+import React, { useState } from 'react';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity
+} from 'react-native';
+import update from 'immutability-helper';
 
 
-export default function JumpingGame() {
+const gameMatrix = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+]
 
-    const screenWidth = Dimensions.get("screen").width
-    const screenHeight = Dimensions.get("screen").height
-    const birdLeft = screenWidth / 2
-    const [birdBottom, setBirdBottom]= useState(screenHeight / 2)
+const styles = {
+  row: {
+    flexDirection: 'row'
+  },
 
+  cell: {
+    width: 100,
+    height: 100,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 
+  cellText: {
+    fontSize: 24,
+    fontWeight: 'bold'
+  }
+}
 
+const X_SYMBOL = '💧';
+const O_SYMBOL = '🛀🏾';
 
-    return(
-        <Bird />
-
-    )
-        
-
-    
-};
-/*
-
-
-  const screenWidth = Dimensions.get("screen").width
-  const screenHeight = Dimensions.get("screen").height
-  const birdLeft = screenWidth / 2
-  const [birdBottom, setBirdBottom]= useState(screenHeight / 2)
-  const [obstaclesLeft, setObstaclesLeft]= useState(screenWidth)
-  const [obstaclesLeftTwo, setObstaclesLeftTwo]= useState(screenWidth + screenWidth/2 + 30)
-  const [obstaclesNegHeight, setObstaclesNegHeight]= useState(0)
-  const [obstaclesNegHeightTwo, setObstaclesNegHeightTwo]= useState(0)
-  const [isGameOver, setIsGameOver]= useState(false)
-  const [score, setScore]= useState(0)
-  const gravity = 3
-  let obstacleWidth = 60
-  let obstacleHeight = 300
-  let gap = 200
-  let gameTimerId
-  let obstaclesTimerId
-  let obstaclesTimerIdTwo
-  
-//start bird falling
-  useEffect(() => {
-    if (birdBottom > 0) {
-      gameTimerId = setInterval(() => {
-        setBirdBottom(birdBottom => birdBottom - gravity)
-      },30)
-  
-      return () => {
-        clearInterval(gameTimerId)
-      }
+const generateMap = (mapData, callback) => {
+  const mapJsx = [];
+  for (let i = 0; i < mapData.length; i++) {
+    const row = mapData[i];
+    const rowJsx = [];
+    for (let j = 0; j < row.length; j++) {
+      rowJsx.push(
+        <TouchableOpacity
+          onPress={() => { callback(i, j) }}
+          style={styles.cell}
+          key={`cell_${i}_${j}`}>
+          <Text style={styles.cellText}>
+            {mapData[i][j]}
+          </Text>
+        </TouchableOpacity>
+      )
     }
-    //if i dont have birdBottom as a dependecy, it wont stop
-  }, [birdBottom])
-  console.log(birdBottom)
+    mapJsx.push(<View style={styles.row} key={`row_${i}`}>{rowJsx}</View>)
+  }
 
-  const jump = () => {
-    if (!isGameOver && (birdBottom < screenHeight)) {
-      setBirdBottom(birdBottom => birdBottom + 50)
-      console.log('jumped')
+  return mapJsx
+}
+
+
+const getWinner = (gameStage) => {
+  let transposed = [[], [], []];
+  let diagonals = [[], []];
+  for (let i = 0; i < gameStage.length; i++) {
+    const row = gameStage[i];
+    for (let j = 0; j < row.length; j++) {
+      transposed[i][j] = gameStage[j][i];
+      if (i === j) {
+        diagonals[0][i] = gameStage[i][j];
+      }
+      if (i === Math.abs(j - (row.length - 1))) {
+        diagonals[1][i] = gameStage[i][j];
+      }
     }
   }
 
-  //start first obstacle
-  useEffect(() => {
-    if (obstaclesLeft > -60) {
-      obstaclesTimerId = setInterval(() => {
-        setObstaclesLeft(obstaclesLeft => obstaclesLeft - 5)
-      }, 30)
-      return () => {
-        clearInterval(obstaclesTimerId)
-      }
-    } else {
-      setScore(score => score +1)
-      setObstaclesLeft(screenWidth)
-      setObstaclesNegHeight( - Math.random() * 100)
+  const allLines = gameStage.concat(transposed).concat(diagonals);
+  for (let i = 0; i < allLines.length; i++) {
+    const line = allLines[i];
+    const isEqual = line.every((item) => item === line[0]);
+    if (isEqual) {
+      return line[0];
     }
-  }, [obstaclesLeft])
+  }
 
-  //start second obstacle
-  useEffect(() => {
-    if (obstaclesLeftTwo > -60) {
-      obstaclesTimerIdTwo = setInterval(() => {
-        setObstaclesLeftTwo(obstaclesLeftTwo => obstaclesLeftTwo - 5)
-      }, 30)
-        return () => {
-          clearInterval(obstaclesTimerIdTwo)
-        }
-      } else {
-          setScore(score => score +1)
-          setObstaclesLeftTwo(screenWidth)
-          setObstaclesNegHeightTwo( - Math.random() * 100)
-        }
-  }, [obstaclesLeftTwo])
-
-    //check for collisions
-    useEffect(() => {
-      console.log(obstaclesLeft)
-      console.log(screenWidth/2)
-      console.log(obstaclesLeft > screenWidth/2)
-      if (
-        ((birdBottom < (obstaclesNegHeight + obstacleHeight + 30) ||
-        birdBottom > (obstaclesNegHeight + obstacleHeight + gap -30)) &&
-        (obstaclesLeft > screenWidth/2 -30 && obstaclesLeft < screenWidth/2 + 30 )
-        )
-        || 
-        ((birdBottom < (obstaclesNegHeightTwo + obstacleHeight + 30) ||
-        birdBottom > (obstaclesNegHeightTwo + obstacleHeight + gap -30)) &&
-        (obstaclesLeftTwo > screenWidth/2 -30 && obstaclesLeftTwo < screenWidth/2 + 30 )
-        )
-        ) 
-        {
-        console.log('game over')
-        gameOver()
-      }
-    })
-
-    const gameOver = () => {
-      clearInterval(gameTimerId)
-      clearInterval(obstaclesTimerId)
-      clearInterval(obstaclesTimerIdTwo)
-      setIsGameOver(true)
-    }
-  
-
-  return (
-    <TouchableWithoutFeedback onPress={jump}>
-      <View style={styles.container}>
-        {isGameOver && <Text style={{fontSize: '30px'}}>{score}</Text>}
-        <Bird 
-          birdBottom = {birdBottom} 
-          birdLeft = {birdLeft}
-        />
-        <Obstacles 
-          color={'green'}
-          obstacleWidth = {obstacleWidth}
-          obstacleHeight = {obstacleHeight}
-          randomBottom = {obstaclesNegHeight}
-          gap = {gap}
-          obstaclesLeft = {obstaclesLeft}
-        />
-        <Obstacles 
-          color={'yellow'}
-          obstacleWidth = {obstacleWidth}
-          obstacleHeight = {obstacleHeight}
-          randomBottom = {obstaclesNegHeightTwo}
-          gap = {gap}
-          obstaclesLeft = {obstaclesLeftTwo}
-        />
-      </View>
-    </TouchableWithoutFeedback>
-  )
+  return null;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
-})*/
+const App = () => {
 
-//export default JumpingGame;
+  const [gameStage, setGameStage] = useState(gameMatrix);
+  const [turnSymbol, setTurnSymbol] = useState(X_SYMBOL);
+  const [winnerSymbol, setWinnerSymbol] = useState();
+
+  const nextTurnSymbol = () => {
+    setTurnSymbol(turnSymbol === X_SYMBOL ? O_SYMBOL : X_SYMBOL);
+  }
+
+
+  const hasNulls = (inputArray) => {
+    let hasNulls = false;
+    for (let i = 0; i < inputArray.length; i++) {
+      const row = inputArray[i];
+      for (let j = 0; j < row.length; j++) {
+        if (inputArray[i][j] === null) {
+          hasNulls = true;
+        }
+      }
+    }
+
+    return hasNulls;
+  }
+
+  return (
+    <>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={{ fontSize: 32 }}>{!winnerSymbol && `It's  ${turnSymbol}'s turn`}</Text>
+          <Text style={{ fontSize: 32 }}>{winnerSymbol}</Text>
+          {winnerSymbol && < TouchableOpacity
+            onPress={() => {
+              setGameStage(gameMatrix);
+              setTurnSymbol(X_SYMBOL);
+              setWinnerSymbol(undefined);
+            }}>
+            <Text style={{ fontSize: 32, textTransform: 'uppercase' }}>restart</Text>
+          </TouchableOpacity>}
+        </View>
+        <View style={{ flex: 6, alignItems: 'center', justifyContent: 'center' }}>
+          {generateMap(gameStage, (i, j) => {
+            if (winnerSymbol || gameStage[i][j]) {
+              return;
+            }
+            console.log('clicked', i, j);
+            const newStage = update(gameStage, {
+              [i]: {
+                [j]: { $set: turnSymbol }
+              }
+            })
+            nextTurnSymbol();
+            setGameStage(newStage);
+            const winner = getWinner(newStage);
+            if (winner) {
+              setWinnerSymbol(`${winner} wins!`)
+            } else if (!hasNulls(newStage)) {
+              setWinnerSymbol('It is a tie!')
+            }
+          })}
+        </View>
+
+      </SafeAreaView>
+    </>
+  );
+};
+
+export default App;
