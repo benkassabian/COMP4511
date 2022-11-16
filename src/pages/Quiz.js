@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, Center } from 'react-native'
 import { COLORS, SIZES } from '../components/theme';
 import data from '../components/QuizData';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Header from "../components/Header";
 import styles from "../styles/global";
 
-const Quiz = () => {
+const Quiz = ({ navigation }) => {
 
   const allQuestions = data;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -201,6 +201,7 @@ const Quiz = () => {
 
 
   return (
+    
      
      <SafeAreaView style={{
        flex: 1
@@ -213,6 +214,10 @@ const Quiz = () => {
          backgroundColor: COLORS.background,
          position:'relative'
        }}>
+
+    <Center>
+          <Header heading={"Quiz"} navigation={navigation} />
+    </Center>
 
          {/* ProgressBar */}
          { renderProgressBar() }
@@ -299,4 +304,4 @@ const Quiz = () => {
   )
 }
 
-export default Quiz
+export default Quiz;

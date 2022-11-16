@@ -3,9 +3,9 @@ import {
   SafeAreaView,
   View,
   Text,
-  TouchableOpacity,
-  Center
+  TouchableOpacity
 } from 'react-native';
+import {Alert, Image, Center, Box, Heading, FormControl, Input, Link, Button, VStack, HStack } from "native-base";
 import update from 'immutability-helper';
 import Header from "../components/Header";
 import stylez from "../styles/global";
@@ -125,7 +125,7 @@ const JumpingGame = ({ navigation }) => {
 
     <>
     <Center>
-          <Header heading={"Tips"} navigation={navigation} />
+          <Header heading={"JumpingGame"} navigation={navigation} />
     </Center>
       <SafeAreaView style={{ flex: 1 }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
