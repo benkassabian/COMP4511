@@ -1,43 +1,8 @@
-import {
-  Alert,
-  Image,
-  View,
-  Center,
-  Box,
-  Heading,
-  FormControl,
-  Input,
-  Link,
-  Button,
-  Text,
-  VStack,
-  HStack,
-  Menu,
-  Divider,
-  Flex,
-  Switch,
-} from "native-base";
+import { Center, Heading, Input, Button, VStack } from "native-base";
 
 import styles from "../../styles/global";
 import React, { Children, useEffect, useState } from "react";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import FeatherIcon from "react-native-vector-icons/Feather";
-import { AsyncStorage } from "react-native";
-import { getData, storeData } from "../../utils/store";
-
-const MenuItem = ({ children }) => {
-  return (
-    <HStack
-      flex={1}
-      justifyContent="space-between"
-      alignItems="center"
-      paddingY="3"
-      paddingX="5%"
-    >
-      {children.map((child) => child)}
-    </HStack>
-  );
-};
 
 export default function AccountSettings() {
   const [show, setShow] = React.useState(false);
