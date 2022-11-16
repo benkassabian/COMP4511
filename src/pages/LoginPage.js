@@ -24,7 +24,7 @@ export default function LoginPage({ navigation }) {
         <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="Password"
           type={show ? "text" : "password"} InputRightElement={<Button size="md" rounded="none" w="1/5" bg="coolGray.400" h="full" onPress={handleClick}>{show ? "Hide" : "Show"}</Button>}
         />
-        <Button size="lg" mt="4">
+        <Button size="lg" mt="4" onPress={() => navigation.navigate('Home')}>
           Log In
         </Button>
         <HStack mt="2" justifyContent="center">

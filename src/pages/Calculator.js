@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 
 
-export default function Calculator() {
+export default function Calculator({ navigation }) {
     const [number1, setNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [number3, setNumber3] = useState(0);

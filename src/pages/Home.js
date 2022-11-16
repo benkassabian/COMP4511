@@ -21,11 +21,12 @@ import styles from "../styles/global";
 import ProfileAvatar from "../components/Avatar";
 import tileIcons from "../utils/homepageIcons.json";
 
-const Tile = ({ name, link }) => {
+const Tile = ({ navigation, name, link }) => {
   return (
     <Box alignItems="center" my="3">
       <Pressable
-        cursor="pointer"
+        // cursor="pointer"
+        onPress={() => navigation.navigate('LandingPage')} 
         // py="3"
         // flex={1}
         // onPress={() => setSelected(0)}
@@ -46,33 +47,33 @@ const Tile = ({ name, link }) => {
 
 const ProfileHeader = () => {
   return (
-    <Stack direction="row" style={styles.profileHeader}>
-      <Text fontSize={40} fontWeight="thin">
+    <HStack style={styles.profileHeader}>
+      <Text fontSize="4xl" semibold>
         Welcome!
       </Text>
       <ProfileAvatar />
-    </Stack>
+    </HStack>
   );
 };
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Stack direction="column">
+      <VStack>
         <ProfileHeader />
-        <Stack direction="row" space="lg">
+        <HStack space="lg">
           <Tile name="Shower Timer" />
           <Tile name="Logbook" />
-        </Stack>
-        <Stack direction="row" space="lg">
+        </HStack>
+        <HStack space="lg">
           <Tile name="Challenges" />
           <Tile name="Calculator" />
-        </Stack>
-        <Stack direction="row" space="lg">
+        </HStack>
+        <HStack space="lg">
           <Tile name="Tips" />
           <Tile name="Games" />
-        </Stack>
-      </Stack>
+        </HStack>
+      </VStack>
     </View>
   );
 };

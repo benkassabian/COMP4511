@@ -31,7 +31,7 @@ export default function SignUpPage({ navigation }) {
         <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"
           onChangeText={value => setData({ ...formData, password2: value})}
         />
-        <Button size="lg" mt="4">
+        <Button size="lg" mt="4" onPress={() => navigation.navigate('Home')}>
           Sign Up
         </Button>
         <HStack mt="2" justifyContent="center">
