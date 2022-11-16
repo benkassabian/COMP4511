@@ -5,6 +5,8 @@ import React from "react";
 // https://docs.nativebase.io/login-signup-forms
 // https://docs.nativebase.io/form
 export default function SignUpPage() {
+  const [formData, setData] = React.useState({});
+
   return <Center w="100%">
     <Box safeArea p="2" w="90%" maxW="320">
       <Center>
@@ -17,10 +19,18 @@ export default function SignUpPage() {
         </Heading>
       </Center>
       <VStack space={5} mt="12">
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Email"/>
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Name"/>
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Password"/>
-        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"/>
+        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Email" 
+          onChangeText={value => setData({ ...formData, email: value})}
+        />
+        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" placeholder="Name"
+          onChangeText={value => setData({ ...formData, name: value})}
+        />         
+        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Password"
+          onChangeText={value => setData({ ...formData, password1: value})}
+        />
+        <Input size="md" px="4" py="3" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"
+          onChangeText={value => setData({ ...formData, password2: value})}
+        />
         <Button mt="2">
           Sign Up
         </Button>
