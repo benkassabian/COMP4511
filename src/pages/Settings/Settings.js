@@ -43,7 +43,8 @@ export default function Settings() {
         fontSize: "xl",
       }}
     >
-      <Heading size="xl" fontWeight="thin" pb="5">
+      <BackButton />
+      <Heading size="xl" fontWeight="thin" paddingY={5}>
         Settings
       </Heading>
       <VStack divider={<Divider />}>

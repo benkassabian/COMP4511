@@ -3,18 +3,17 @@ import { Center, Heading, Input, Button, VStack } from "native-base";
 import styles from "../../styles/global";
 import React, { Children, useEffect, useState } from "react";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import BackButton from "../../components/BackButton";
+import Header from "../../components/Header";
 
-export default function AccountSettings() {
+export default function AccountSettings({ navigation }) {
   const [show, setShow] = React.useState(false);
 
   const handleClick = () => setShow(!show);
 
   return (
     <Center style={styles.container}>
-      <MaterialIcon name="chevron-left" size={30} style={styles.backButton} />
-      <Heading size="xl" fontWeight="thin" pb="5">
-        Account Settings
-      </Heading>
+      <Header heading={"Account Settings"} />
       <VStack width="100%" space={5}>
         <Input
           size="md"

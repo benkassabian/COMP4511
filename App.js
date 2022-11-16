@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { View } from "react-native";
 import { NativeBaseProvider } from "native-base";
 
 import styles from "./src/styles/global";
@@ -19,9 +19,10 @@ import Calculator from "./src/pages/Calculator";
 import TipsPage from "./src/pages/TipsPage";
 import MetricsPage from "./src/pages/MetricsPage";
 import NavBar from "./src/components/NavBar";
-import AccountSettings from "./src/pages/Settings/Account";
 import Settings from "./src/pages/Settings/Settings";
-import CalculatorSettings from "./src/pages/Settings/CalculatorSettings";
+import AccountSettings from "./src/pages/Settings/Account";
+import CalculatorSettings from "./src/pages/Settings/Calculator";
+import { ViewBase } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,7 +47,7 @@ const MyStack = () => {
         <Stack.Screen name="Tips" component={TipsPage} />
         <Stack.Screen name="Metrics" component={MetricsPage} />
       </Stack.Navigator>
-      <NavBar />
+      {/* <NavBar /> */}
     </NavigationContainer>
   );
 };

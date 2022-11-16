@@ -11,7 +11,14 @@ import {
   VStack,
   NativeBaseProvider,
 } from "native-base";
-import { RefreshControl, SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import {
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import Header from "../components/Header";
+import styles from "../styles/global";
 
 const tips = [
   "Brush your teeth with the tap off  😁",
@@ -30,7 +37,7 @@ const wait = (timeout) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
-export default function TipsPage() {
+export default function TipsPage({ navigation }) {
   const [shuffledTips, setShuffledTips] = useState([]);
   // const [refreshing, setRefreshing] = useState(false);
 
@@ -57,60 +64,36 @@ export default function TipsPage() {
   // }, []);
 
   return (
-    <Center h="100%" w="100%">
-      <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <Center marginBottom="50px" marginTop="20px">
-          <Heading
-            mt="0"
-            size="xl"
-            color="coolGray.800"
-            _dark={{ color: "warmGray.50" }}
-            fontWeight="semibold"
-          >
-            Tips
-          </Heading>
-        </Center>
-        {/* <SafeAreaView style={styles.container}>
+    <Center style={styles.container}>
+      <Header heading={"Tips"} navigation={navigation} />
+      {/* <SafeAreaView style={styles.container}>
           <ScrollView
             contentContainerStyle={styles.scrollView}
             refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
           > */}
-        <VStack space={6} alignItems="center">
-          {shuffledTips.splice(0, 5).map((tip, index) => {
-            return (
-              <Center
-                key={index}
-                h="76"
-                minWidth="100%"
-                bg="#FCFCFF"
-                rounded="md"
-                borderWidth="1"
-                borderColor="gray.400"
-                padding="10px"
-              >
-                <Text textAlign="center" fontSize="16.5">
-                  {tip}
-                </Text>
-              </Center>
-            );
-          })}
-        </VStack>
-        <Text> Pull down to see RefreshControl indicator</Text>
-        {/* </ScrollView>
+      <VStack space={6} alignItems="center">
+        {shuffledTips.splice(0, 5).map((tip, index) => {
+          return (
+            <Center
+              key={index}
+              h="76"
+              minWidth="100%"
+              bg="#FCFCFF"
+              rounded="md"
+              borderWidth="1"
+              borderColor="gray.400"
+              padding="10px"
+            >
+              <Text textAlign="center" fontSize="16.5">
+                {tip}
+              </Text>
+            </Center>
+          );
+        })}
+      </VStack>
+      <Text> Pull down to see RefreshControl indicator</Text>
+      {/* </ScrollView>
         </SafeAreaView> */}
-      </Box>
     </Center>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollView: {
-    flex: 1,
-    // backgroundColor: "none",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

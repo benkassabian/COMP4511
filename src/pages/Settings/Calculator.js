@@ -60,8 +60,8 @@ export default function CalculatorSettings() {
 
   return (
     <Center style={styles.container}>
-      <MaterialIcon name="chevron-left" size={30} style={styles.backButton} />
-      <Heading size="xl" fontWeight="thin" pb="5">
+      <BackButton />
+      <Heading size="xl" fontWeight="thin" paddingY={5}>
         Calculator Settings
       </Heading>
       <VStack width="100%" divider={<Divider />} space={5}>
