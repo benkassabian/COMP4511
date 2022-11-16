@@ -1,5 +1,7 @@
 // 1. Import the extendTheme function
+import { LinearGradient } from "expo-linear-gradient";
 import { extendTheme, NativeBaseProvider } from "native-base";
+
 // 2. Extend the theme to include custom colors, fonts, etc
 const newColorTheme = {
   primary: {
@@ -11,7 +13,9 @@ const newColorTheme = {
   config: {
     initialColorMode: 600,
   },
+  background:"#F3EAFE", 
 };
+
 const theme = extendTheme({
   colors: newColorTheme,
   components: {

@@ -23,8 +23,9 @@ import Home from "./src/pages/Home";
 //   return (
 //     <NativeBaseProvider theme={theme}>
 //       <ImageBackground style={styles.container} source={background}>
-//         {/* <LandingPage /> */}
-//         <SignUpPage />
+//         <LandingPage />
+//         {/* <SignUpPage /> */}
+//         {/* <Quiz /> */}
 //         {/* <LoginPage /> */}
 //         {/* <NavBar /> */}
 //       </ImageBackground>
@@ -40,13 +41,14 @@ const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="SignUpPage" component={SignUpPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Quiz" component={LoginPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
