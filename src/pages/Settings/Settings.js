@@ -1,7 +1,7 @@
 import { Text, VStack, Divider, Flex, AlertDialog, Button } from "native-base";
 
 import styles from "../../styles/global";
-import React, { Children, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import Header from "../../components/Header";
@@ -51,6 +51,11 @@ const LogoutPopup = ({ isOpen, onClose, cancelRef, navigation }) => {
 
 export default function Settings({ navigation }) {
   const [isLogout, setLogout] = useState(false);
+
+  // TO DO
+  const [name, setName] = useState(undefined);
+  const [email, setEmail] = useState(undefined);
+  const [password, setPassword] = useState(undefined);
 
   const onClose = () => setLogout(false);
 
