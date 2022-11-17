@@ -9,17 +9,61 @@ import {
   Input,
   Button,
   Center,
+  Alert,
+  Stack,
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
 import styles from "../styles/global";
+import { getData, storeData } from "../utils/store";
 
 // https://docs.nativebase.io/login-signup-forms
 // https://docs.nativebase.io/form
+const ErrorAlert = ({ message }) => {
+  return (
+    <Alert rounded="xl" status="error">
+      <HStack flexShrink={1} space={2} justifyContent="space-between">
+        <HStack space={2} flexShrink={1}>
+          <Alert.Icon mt="1" />
+          <Text fontSize="md" color="coolGray.800">
+            {message}
+          </Text>
+        </HStack>
+      </HStack>
+    </Alert>
+  );
+};
+
 export default function LoginPage({ navigation }) {
   const [show, setShow] = React.useState(false);
+  const [formData, setFormData] = React.useState({});
+  const [error, setError] = React.useState(undefined);
+
   const handleClick = () => setShow(!show);
 
+  const handleLogin = async () => {
+    // ensure formdata has correct fields
+    const { email, password } = formData;
+    if (email && password) {
+      try {
+        const userData = await getData("users");
+        if (userData === undefined) {
+          setError(`Invalid details`);
+        } else {
+          userData.data.map(async (user) => {
+            if (user.email === email && user.password1 === password) {
+              await storeData("username", user.name);
+              navigation.navigate("HomePage");
+            } else setError("Invalid details");
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      setError(`Please enter your ${email ? "password" : "email"}.`);
+    }
+  };
   return (
     <Center bgColor="#F3EAFE" w="100%" h="100%">
       <Box safeArea p="2" w="90%" maxW="320">
@@ -47,6 +91,7 @@ export default function LoginPage({ navigation }) {
           </Heading>
         </Center>
         <VStack space={5} mt="12">
+          {error && <ErrorAlert message={error} />}
           <Input
             size="md"
             px="6"
@@ -54,6 +99,10 @@ export default function LoginPage({ navigation }) {
             variant="rounded"
             bg="coolGray.100"
             placeholder="Email"
+            onChangeText={(value) => {
+              setError(undefined);
+              setFormData({ ...formData, email: value });
+            }}
           />
           <Input
             size="md"
@@ -63,6 +112,10 @@ export default function LoginPage({ navigation }) {
             bg="coolGray.100"
             placeholder="Password"
             type={show ? "text" : "password"}
+            onChangeText={(value) => {
+              setError(undefined);
+              setFormData({ ...formData, password: value });
+            }}
             InputRightElement={
               <Button
                 size="md"
@@ -76,11 +129,7 @@ export default function LoginPage({ navigation }) {
               </Button>
             }
           />
-          <Button
-            size="lg"
-            mt="4"
-            onPress={() => navigation.navigate("HomePage")}
-          >
+          <Button size="lg" mt="4" onPress={handleLogin}>
             Log In
           </Button>
           <HStack mt="2" justifyContent="center">

@@ -1,5 +1,16 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Box, Center, Checkbox, Image, Text, useToast, HStack, VStack, Flex, Button } from "native-base";
+import {
+  Box,
+  Center,
+  Checkbox,
+  Image,
+  Text,
+  useToast,
+  HStack,
+  VStack,
+  Flex,
+  Button,
+} from "native-base";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import Header from "../components/Header";
@@ -32,25 +43,23 @@ export default function ChallengesPage({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-        <Header heading={"Challenges"} navigation={navigation} />
-        <HStack h="12" mb="4" pr="10">
-          <Image h="32"
-            source={require("../../assets/VirtualCharacter.png")}
-            resizeMode={"contain"}
-            alt="virtual character"
-          />
-          <Center h="32" w="48">
-          <Text
-            fontSize="xl"
-            fontWeight="bold"
-          >
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4">
+      <Header heading={"Challenges"} navigation={navigation} />
+      <HStack h="12" mb="4" pr="10">
+        <Image
+          h="32"
+          source={require("../../assets/VirtualCharacter.png")}
+          resizeMode={"contain"}
+          alt="virtual character"
+        />
+        <Center h="32" w="48">
+          <Text fontSize="xl" fontWeight="bold">
             Here are your Daily Challenges!
           </Text>
-          </Center>
-        </HStack>
+        </Center>
+      </HStack>
 
-        <VStack safeArea p="2" h="100%" w="100%" mt="2" px="4" space="4">
+      <VStack safeArea p="2" h="100%" w="100%" mt="2" px="4" space="4">
         <TouchableOpacity
           style={{
             backgroundColor: "#FCFCFC",
@@ -188,57 +197,57 @@ export default function ChallengesPage({ navigation }) {
           </HStack>
         </TouchableOpacity>
         <Button
-            size="lg"
-            mt="2"
-            onPress={() => {
-              // no challenges selected
-              if (
-                firstChallengeDone === false &&
-                secondChallengeDone === false &&
-                thirdChallengeDone === false &&
-                fourthChallengeDone === false
-              ) {
-                if (!toast.isActive(errorId)) {
-                  toast.show({
-                    id: errorId,
-                    title: "Select challenges you have completed",
-                    placement: "top",
-                    bgColor: "error.500",
-                  });
-                }
+          size="lg"
+          mt="2"
+          onPress={() => {
+            // no challenges selected
+            if (
+              firstChallengeDone === false &&
+              secondChallengeDone === false &&
+              thirdChallengeDone === false &&
+              fourthChallengeDone === false
+            ) {
+              if (!toast.isActive(errorId)) {
+                toast.show({
+                  id: errorId,
+                  title: "Select challenges you have completed",
+                  placement: "top",
+                  bgColor: "error.500",
+                });
               }
-              // all challenges completed
-              else if (
-                firstChallengeDone === true &&
-                secondChallengeDone === true &&
-                thirdChallengeDone === true &&
-                fourthChallengeDone === true
-              ) {
-                if (!toast.isActive(successId)) {
-                  toast.show({
-                    id: successId,
-                    title: "Yay, you earned the Super Saver badge!",
-                    placement: "top",
-                    bgColor: "success.600",
-                  });
-                  storeData();
-                }
+            }
+            // all challenges completed
+            else if (
+              firstChallengeDone === true &&
+              secondChallengeDone === true &&
+              thirdChallengeDone === true &&
+              fourthChallengeDone === true
+            ) {
+              if (!toast.isActive(successId)) {
+                toast.show({
+                  id: successId,
+                  title: "Yay, you earned the Super Saver badge!",
+                  placement: "top",
+                  bgColor: "success.600",
+                });
+                storeData();
               }
-              // some challenges completed
-              else {
-                if (!toast.isActive(infoId)) {
-                  toast.show({
-                    id: infoId,
-                    title: "Great job, try some more challenges!",
-                    placement: "top",
-                    bgColor: "cyan.600",
-                  });
-                }
+            }
+            // some challenges completed
+            else {
+              if (!toast.isActive(infoId)) {
+                toast.show({
+                  id: infoId,
+                  title: "Great job, try some more challenges!",
+                  placement: "top",
+                  bgColor: "cyan.600",
+                });
               }
-            }}
-          >
-            Save
-          </Button>
+            }
+          }}
+        >
+          Save
+        </Button>
       </VStack>
     </Box>
   );

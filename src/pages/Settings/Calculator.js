@@ -45,7 +45,7 @@ export default function CalculatorSettings({ navigation }) {
 
   return (
     <Center style={styles.container}>
-      <Header heading="Calculator" navigation={navigation} link="Settings" />
+      <Header heading="Flow Rate" navigation={navigation} link="Settings" />
       <VStack width="100%" divider={<Divider />} space={5}>
         <MenuItem>
           <FeatherIcon name="droplet" size={30} />
