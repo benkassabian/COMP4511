@@ -34,12 +34,14 @@ const styles = StyleSheet.create({
     width: "80vw",
   },
   avatar: {
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
+    borderWidth: 1,
+    borderColor: "#cccccc"
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 4,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 2,
   },
   tile: {
     borderRadius: 20,

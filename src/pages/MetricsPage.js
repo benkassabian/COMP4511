@@ -26,7 +26,7 @@ export default function MetricsPage({ navigation }) {
   };
 
   const chartConfig = {
-    backgroundColor: "#8B8BD8",
+    // backgroundColor: "#8B8BD8",
     backgroundGradientFrom: "#6d6dce",
     backgroundGradientTo: "#9d9dde",
     decimalPlaces: "1",
@@ -37,21 +37,21 @@ export default function MetricsPage({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
       <Header heading={"Metrics"} />
-      <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <View>
-          <Text fontWeight="semibold">Daily Water Usage Distribution</Text>
-          <Text>
+      <Box safeArea h="100%" w="100%" px="4" >
+          <Text fontSize="xl" fontWeight="semibold">Daily Water Usage Distribution</Text>
+          <Text fontSize="lg">
             Total water used:{" "}
-            <Text fontWeight="semibold" color="#6a6acd">
+            <Text bold fontSize="lg" color="#6a6acd">
               114L
             </Text>
           </Text>
+          <Center>
           <BarChart
             data={bardata}
-            width={300}
-            height={220}
+            width={360}
+            height={200}
             yAxisSuffix={"L"}
             chartConfig={chartConfig}
             style={{
@@ -59,22 +59,22 @@ export default function MetricsPage({ navigation }) {
               borderRadius: 16,
             }}
           />
-        </View>
+          </Center>
 
-        <View>
-          <Text marginTop="30px" fontWeight="semibold">
+          <Text mt="8" fontSize="xl" fontWeight="semibold">
             Weekly Overview
           </Text>
-          <Text>
+          <Text fontSize="lg">
             Day with lowest water usage:{" "}
-            <Text fontWeight="semibold" color="#6a6acd">
+            <Text bold fontSize="lg" color="#6a6acd">
               Tue
             </Text>
           </Text>
+          <Center>
           <LineChart
             data={linedata}
-            width={300}
-            height={220}
+            width={360}
+            height={200}
             yAxisSuffix={"L"}
             chartConfig={chartConfig}
             bezier
@@ -83,7 +83,7 @@ export default function MetricsPage({ navigation }) {
               borderRadius: 16,
             }}
           />
-        </View>
+          </Center>
       </Box>
     </Box>
   );

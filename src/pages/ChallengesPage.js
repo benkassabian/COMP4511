@@ -53,7 +53,7 @@ export default function ChallengesPage({ navigation }) {
         <VStack safeArea p="2" h="100%" w="100%" mt="2" px="4" space="4">
         <TouchableOpacity
           style={{
-            backgroundColor: "#e8ebf5",
+            backgroundColor: "#FCFCFC",
             borderRadius: "12px",
             borderColor: "#989CA0",
             borderWidth: "1",
@@ -87,7 +87,7 @@ export default function ChallengesPage({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "#e8ebf5",
+            backgroundColor: "#FCFCFC",
             borderRadius: "12px",
             borderColor: "#989CA0",
             borderWidth: "1",
@@ -121,7 +121,7 @@ export default function ChallengesPage({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "#e8ebf5",
+            backgroundColor: "#FCFCFC",
             borderRadius: "12px",
             borderColor: "#989CA0",
             borderWidth: "1",
@@ -155,7 +155,7 @@ export default function ChallengesPage({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            backgroundColor: "#e8ebf5",
+            backgroundColor: "#FCFCFC",
             borderRadius: "12px",
             borderColor: "#989CA0",
             borderWidth: "1",

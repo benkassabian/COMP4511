@@ -4,7 +4,7 @@ import styles from "../styles/global";
 
 export default function Header({ navigation, heading, link }) {
   return (
-    <Center w="100%" h="20">
+    <Center w="100%" h="16">
       {navigation && (
         <IconButton
           rounded="3xl"
@@ -14,7 +14,7 @@ export default function Header({ navigation, heading, link }) {
         />
       )}
       {heading && (
-        <Heading size="xl" fontWeight="thin" pb="4">
+        <Heading size="xl" fontWeight="thin" mb="2">
           {heading}
         </Heading>
       )}

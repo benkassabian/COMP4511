@@ -1,4 +1,4 @@
-import { Box, Center, FlatList, Image, Text } from "native-base";
+import { Box, Center, FlatList, Image, Text, HStack, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 
@@ -40,41 +40,29 @@ export default function TipsPage({ navigation }) {
   }, [refreshing]);
 
   return (
-    <Center h="97%" w="100%">
-      <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <Center>
-          <Header heading={"Tips"} navigation={navigation} />
-        </Center>
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
+    <Header heading={"Tips"} navigation={navigation} />
+    <HStack h="12" mb="4" pr="10">
+      <Image h="32"
+        source={require("../../assets/VirtualCharacter.png")}
+        resizeMode={"contain"}
+        alt="virtual character"
+      />
+      <Center h="32" w="48">
+      <Text
+        fontSize="xl"
+        fontWeight="bold"
+      >
+        Find out how you can save water!
+      </Text>
+      </Center>
+    </HStack>
 
-        <Image
-          source={require("../../assets/VirtualCharacter.png")}
-          display="block"
-          style={{
-            marginBottom: "7%",
-            width: 140,
-            height: 120,
-            position: "relative",
-            top: 0,
-            left: 0,
-            right: 0,
-          }}
-          resizeMode={"contain"}
-          alt="virtual character"
-        />
-        <Text
-          textAlign="left"
-          fontSize="18"
-          color="#37CDDD"
-          fontWeight="semibold"
-          marginTop="0px"
-          top="120"
-          left="150"
-          position="absolute"
-        >
-          Here are some{"\n"}Water Saving{"\n"}Tips!
-        </Text>
-
-        <FlatList
+    <VStack safeArea p="2" h="100%" w="100%" mt="2" px="4" space="4">
+        <Text textAlign="center">
+          Pull down to refresh
+        </Text> 
+    <FlatList
           data={shuffledTips.splice(0, 5)}
           numColumns={1}
           renderItem={({ item, index }) => {
@@ -83,14 +71,14 @@ export default function TipsPage({ navigation }) {
                 key={index}
                 h="76"
                 minWidth="100%"
-                bg="#FCFCFF"
+                bg="#FCFCFC"
                 rounded="md"
                 borderWidth="1"
                 borderColor="gray.400"
                 padding="10px"
                 marginBottom="14px"
               >
-                <Text textAlign="center" fontSize="16.5">
+                <Text textAlign="center" fontSize="lg">
                   {item}
                 </Text>
               </Center>
@@ -99,10 +87,76 @@ export default function TipsPage({ navigation }) {
           refreshing={refreshing}
           onRefresh={() => setRefreshing(true)}
         />
-        <Text textAlign="center" fontSize="22" color="#37CDDD" fontWeight="semibold">
-          Refresh to see new tips!
-        </Text>
-      </Box>
-    </Center>
+  </VStack>
+</Box>
+
+
+
+
+
+    // <Center h="97%" w="100%">
+    //   <Box safeArea p="2" h="100%" w="90%" maxW="320">
+    //     <Center>
+    //       <Header heading={"Tips"} navigation={navigation} />
+    //     </Center>
+
+    //     <Image
+    //       source={require("../../assets/VirtualCharacter.png")}
+    //       display="block"
+    //       style={{
+    //         marginBottom: "7%",
+    //         width: 140,
+    //         height: 120,
+    //         position: "relative",
+    //         top: 0,
+    //         left: 0,
+    //         right: 0,
+    //       }}
+    //       resizeMode={"contain"}
+    //       alt="virtual character"
+    //     />
+    //     <Text
+    //       textAlign="left"
+    //       fontSize="18"
+    //       color="#37CDDD"
+    //       fontWeight="semibold"
+    //       marginTop="0px"
+    //       top="120"
+    //       left="150"
+    //       position="absolute"
+    //     >
+    //       Here are some{"\n"}Water Saving{"\n"}Tips!
+    //     </Text>
+
+    //     <FlatList
+    //       data={shuffledTips.splice(0, 5)}
+    //       numColumns={1}
+    //       renderItem={({ item, index }) => {
+    //         return (
+    //           <Center
+    //             key={index}
+    //             h="76"
+    //             minWidth="100%"
+    //             bg="#FCFCFF"
+    //             rounded="md"
+    //             borderWidth="1"
+    //             borderColor="gray.400"
+    //             padding="10px"
+    //             marginBottom="14px"
+    //           >
+    //             <Text textAlign="center" fontSize="16.5">
+    //               {item}
+    //             </Text>
+    //           </Center>
+    //         );
+    //       }}
+    //       refreshing={refreshing}
+    //       onRefresh={() => setRefreshing(true)}
+    //     />
+    //     <Text textAlign="center" fontSize="22" color="#37CDDD" fontWeight="semibold">
+    //       Refresh to see new tips!
+    //     </Text>
+    //   </Box>
+    // </Center>
   );
 }
