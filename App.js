@@ -46,7 +46,7 @@ const HomePage = () => {
 export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
+      <NavigationContainer >
         <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="SignUpPage" component={SignUpPage} />

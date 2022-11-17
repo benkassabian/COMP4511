@@ -18,7 +18,7 @@ import tileIcons from "../utils/homepageIcons.json";
 
 const Tile = ({ name, link, navigation }) => {
   return (
-    <Box alignItems="center" margin="3" flexBasis="40%">
+    <Box alignItems="center" m="2">
       <Pressable onPress={() => navigation.navigate(link)}>
         {({ isHovered, isFocused, isPressed }) => (
           <Image
@@ -36,8 +36,8 @@ const Tile = ({ name, link, navigation }) => {
 
 const ProfileHeader = () => {
   return (
-    <HStack justifyContent="space-around" alignItems="center" width="100%">
-      <Heading fontSize="4xl" fontWeight="thin">
+    <HStack justifyContent="space-around" alignItems="center" width="100%" py="2">
+      <Heading fontSize="4xl" fontWeight="light">
         Welcome!
       </Heading>
       <ProfileAvatar />
@@ -47,8 +47,7 @@ const ProfileHeader = () => {
 
 const Home = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      {/* <VStack> */}
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
       <ProfileHeader />
       <Flex
         flexWrap="wrap"
@@ -59,15 +58,12 @@ const Home = ({ navigation }) => {
       >
         <Tile name="Shower Timer" link="Home" navigation={navigation} />
         <Tile name="Logbook" link="LogBook" navigation={navigation} />
-        {/* <HStack space="lg"> */}
         <Tile name="Challenges" link="Challenges" navigation={navigation} />
         <Tile name="Calculator" link="Calculator" navigation={navigation} />
-        {/* <HStack space="lg"> */}
         <Tile name="Tips" link="Tips" navigation={navigation} />
         <Tile name="Games" link="Games" navigation={navigation} />
       </Flex>
-      {/* </VStack> */}
-    </View>
+    </Box>
   );
 };
 

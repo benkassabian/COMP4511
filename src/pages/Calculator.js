@@ -22,7 +22,7 @@ export default function Calculator({ navigation }) {
   const [number2, setNumber2] = useState(0);
   const [number3, setNumber3] = useState(0);
   const [total, setTotal] = useState(number1 + number2 + number3);
-  const [text, setText] = useState("initial text");
+  const [text, setText] = useState("");
   //const onPressHandler = event => setText("Changed text");
 
   function addTogether() {
@@ -31,31 +31,24 @@ export default function Calculator({ navigation }) {
     //Alert.alert('Alert');//, 'Tulos: ' + newTotal); // total has the old value in the render
     //console.log(newTotal);
     //const onPressHandler = event => setText("Changed text");
-    setText("Your Estimated Quarterly Water Bill Is: $" + newTotal);
+    setText("Your estimated quarterly water bill: $" + newTotal );
   }
 
   return (
-    <Center style={styles.container}>
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
       <Header heading={"Calculator"} navigation={navigation} />
-      <Box safeArea p="2" py="6" w="90%" maxW="290">
+      <VStack safeArea w="100%" px="4" space="4">
         <Heading
-          mt="1"
-          _dark={{
-            color: "black",
-          }}
           color="black"
           fontWeight="medium"
-          size="xs"
+          size="md"
         >
-          Please Enter Your Usage Statistics!
+          Estimate your water bill:
         </Heading>
-
-        <VStack space={8} mt="5">
+        <VStack space="4">
           <FormControl>
-            <FormControl.Label>Daily Water Usage In Shower</FormControl.Label>
-            <Input
-              type="number"
-              placeholder="0"
+            <FormControl.Label>Daily shower time (minutes)</FormControl.Label>
+            <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="0"
               value={number1}
               onChangeText={(v) => {
                 setNumber1(Number.parseInt(v)); // Use parsed value from onChangeText
@@ -63,10 +56,8 @@ export default function Calculator({ navigation }) {
             />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Daily Water Usage In Kitchen</FormControl.Label>
-            <Input
-              type="number"
-              placeholder="0" 
+            <FormControl.Label>Daily kitchen water usage (litres) </FormControl.Label>
+            <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="0"
               value={number2}
               onChange={(e) => {
                 setNumber2(Number.parseInt(e.nativeEvent.text)); // or get correct value from nativeEvent onChange
@@ -74,49 +65,38 @@ export default function Calculator({ navigation }) {
             />
           </FormControl>
           <FormControl>
-            <FormControl.Label>Daily Water Usage In Garden</FormControl.Label>
-            <Input
-              type="number"
-              placeholder="0"
+            <FormControl.Label>Daily garden water usage (litres)</FormControl.Label>
+            <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" placeholder="0"
               value={number3}
               onChange={(e) => {
                 setNumber3(Number.parseInt(e.nativeEvent.text)); // or get correct value from nativeEvent onChange
               }}
             />
           </FormControl>
-          <Button onPress={addTogether} mt="2" colorScheme="indigo">
-            SUBMIT
-          </Button>
 
-          <Text style={{ fontSize: 22 }}>{text}</Text>
         </VStack>
-      </Box>
-
-      <View
-        style={{
-          flex: 1,
-          paddingVertical: 40,
-          paddingHorizontal: 16,
-          //backgroundColor: COLORS.background,
-          position: "relative",
-        }}
-      >
-        <Image
-          source={require("../../assets/VirtualCharacter.png")}
-          style={{
-            width: 150,
-            height: 130,
-            zIndex: -1,
-            position: "center",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            opacity: 0.5,
-          }}
-          resizeMode={"contain"}
-          alt="virtual character"
-        />
-      </View>
-    </Center>
+          <Button size="lg" mt="4" onPress={addTogether}>
+          Calculate
+        </Button>
+          <Center w="100%">
+          <Text fontSize="xl" bold>{text}</Text>
+          </Center>
+      </VStack>
+      <HStack h="12" mb="4" pr="10">
+          <Image h="32"
+            source={require("../../assets/VirtualCharacter.png")}
+            resizeMode={"contain"}
+            alt="virtual character"
+          />
+          <Center h="32" w="48">
+          <Text
+            fontSize="lg"
+            fontWeight="semibold"
+          >
+            Limit your shower time to reduce your water bill!
+          </Text>
+          </Center>
+        </HStack>
+    </Box>
   );
 }

@@ -21,7 +21,7 @@ export default function LoginPage({ navigation }) {
   const handleClick = () => setShow(!show);
 
   return (
-    <Center style={styles.container}>
+    <Center bgColor="#F3EAFE" w="100%" h="100%">
       <Box safeArea p="2" w="90%" maxW="320">
         <Center>
           <Pressable onPress={() => navigation.navigate("LandingPage")}>

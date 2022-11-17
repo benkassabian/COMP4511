@@ -7,7 +7,7 @@ import React from "react";
 export default function SignUpPage({ navigation }) {
   const [formData, setData] = React.useState({});
 
-  return <Center w="100%" h="100%">
+  return <Center bgColor="#F3EAFE" w="100%" h="100%">
     <Box safeArea p="2" w="90%" maxW="320">
       <Center>
         <Pressable onPress={() => navigation.navigate('LandingPage')}><Logo /></Pressable>
@@ -31,7 +31,7 @@ export default function SignUpPage({ navigation }) {
         <Input size="md" px="6" py="4" variant="rounded" bg="coolGray.100" type="password" placeholder="Confirm Password"
           onChangeText={value => setData({ ...formData, password2: value})}
         />
-        <Button size="lg" mt="4" onPress={() => navigation.navigate('Home')}>
+        <Button size="lg" mt="4" onPress={() => navigation.navigate('HomePage')}>
           Sign Up
         </Button>
         <HStack mt="2" justifyContent="center">

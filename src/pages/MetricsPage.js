@@ -37,7 +37,7 @@ export default function MetricsPage({ navigation }) {
   };
 
   return (
-    <Center style={styles.container}>
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20">
       <Header heading={"Metrics"} />
       <Box safeArea p="2" h="100%" w="90%" maxW="320">
         <View>
@@ -85,6 +85,6 @@ export default function MetricsPage({ navigation }) {
           />
         </View>
       </Box>
-    </Center>
+    </Box>
   );
 }

@@ -2,7 +2,7 @@ import { Pressable, Box, Heading, Button, Stack, Center, VStack, Image} from "na
 import Logo from "../components/Logo";
 
 const LandingPage = ({ navigation }) => {
-  return <Center w="100%" h="100%">
+  return <Center bgColor="#F3EAFE" w="100%" h="100%">
      <Box safeArea p="2" w="90%" maxW="320">
       <Center>
         <Pressable onPress={() => navigation.navigate('LandingPage')}><Logo /></Pressable>

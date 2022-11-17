@@ -1,10 +1,10 @@
-import { Heading, IconButton } from "native-base";
+import { Center, Heading, IconButton } from "native-base";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import styles from "../styles/global";
 
 export default function Header({ navigation, heading, link }) {
   return (
-    <>
+    <Center w="100%" h="20">
       {navigation && (
         <IconButton
           rounded="3xl"
@@ -14,10 +14,10 @@ export default function Header({ navigation, heading, link }) {
         />
       )}
       {heading && (
-        <Heading size="xl" fontWeight="thin" pb="5">
+        <Heading size="xl" fontWeight="thin" pb="4">
           {heading}
         </Heading>
       )}
-    </>
+    </Center>
   );
 }
