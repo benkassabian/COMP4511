@@ -212,7 +212,7 @@ const Quiz = ({ navigation }) => {
      }}>
 
     <Center>
-          <Header heading={"Quiz"} navigation={navigation} />
+          <Header heading={"This Week's Quiz"} navigation={navigation} />
     </Center>
 
        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />

@@ -26,11 +26,11 @@ export default function GameHomeScreen({ navigation }) {
         </HStack>
       <Box safeArea p="2" mt="6" h="100%" w="90%" maxW="320">
        <VStack space="10" mt="5" w="100%" >
-          <Button mt="2" size="lg" p="10" onPress={() => navigation.navigate('JumpingGame')}>
-            Water Jump
+          <Button style={{borderRadius: 15}} mt="2" size="lg" p="10" onPress={() => navigation.navigate('JumpingGame')}>
+            <Text style={{fontSize: 20, color: "white"}} >Water-Tac-Toe</Text>
           </Button>
-          <Button mt="2" size="lg" p="10" onPress={() => navigation.navigate('Quiz')}>
-            Knowledge Quiz
+          <Button style={{borderRadius: 15}} mt="2" size="lg" p="10" onPress={() => navigation.navigate('Quiz')}>
+          <Text style={{fontSize: 20, color: "white"}} >Knowledge Quiz</Text>
           </Button>
         </VStack>
       </Box>
