@@ -26,6 +26,7 @@ import { ViewBase } from "react-native";
 import NavBar from "./src/components/NavigationPanel";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import GameHomeScreen from "./src/pages/GameHomeScreen";
+import LogBookPage from "./src/pages/LogBookPage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -96,6 +97,7 @@ export default function App() {
           <Tab.Screen name="Games" component={GameHomeScreen} />
           <Tab.Screen name="Quiz" component={Quiz} />
           <Tab.Screen name="Tips" component={TipsPage} />
+          <Tab.Screen name="LogBook" component={LogBookPage} />
           <Tab.Screen name="AccountSettings" component={AccountSettings} />
           <Tab.Screen
             name="CalculatorSettings"

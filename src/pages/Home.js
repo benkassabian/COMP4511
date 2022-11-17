@@ -58,7 +58,7 @@ const Home = ({ navigation }) => {
         alignItems={"center"}
       >
         <Tile name="Shower Timer" link="Home" navigation={navigation} />
-        <Tile name="Logbook" link="Home" navigation={navigation} />
+        <Tile name="Logbook" link="LogBook" navigation={navigation} />
         {/* <HStack space="lg"> */}
         <Tile name="Challenges" link="Home" navigation={navigation} />
         <Tile name="Calculator" link="Calculator" navigation={navigation} />
