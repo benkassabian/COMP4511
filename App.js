@@ -34,52 +34,11 @@ const Tab = createBottomTabNavigator();
 
 const HomePage = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        tabBarActiveTintColor: "#8888D7",
-      }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="home" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="settings" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Metrics"
-        component={MetricsPage}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons
-              name="insert-chart-outlined"
-              color={color}
-              size={size}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="person-outline" color={color} size={size} />
-          ),
-        }}
-      />
+    <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveTintColor: "#8888D7", headerShown: false }}>
+      <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
+      <Tab.Screen name="Metrics" component={MetricsPage} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
+      <Tab.Screen name="Profile" component={Profile} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
+      <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
     </Tab.Navigator>
   );
 };
@@ -88,7 +47,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="SignUpPage" component={SignUpPage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
@@ -101,10 +60,7 @@ export default function App() {
           <Tab.Screen name="LogBook" component={LogBookPage} />
           <Tab.Screen name="Challenges" component={ChallengesPage} />
           <Tab.Screen name="AccountSettings" component={AccountSettings} />
-          <Tab.Screen
-            name="CalculatorSettings"
-            component={CalculatorSettings}
-          />
+          <Tab.Screen name="CalculatorSettings" component={CalculatorSettings}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

@@ -13,7 +13,7 @@ const newColorTheme = {
   config: {
     initialColorMode: 600,
   },
-  background:"#F3EAFE", 
+  background:"#000000", 
 };
 
 const theme = extendTheme({
