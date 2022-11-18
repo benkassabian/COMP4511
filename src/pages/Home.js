@@ -31,7 +31,7 @@ const Tile = ({ name, link, navigation }) => {
           />
         )}
       </Pressable>
-      <Text fontSize="xl">{name}</Text>
+      <Text fontSize="lg">{name}</Text>
     </Box>
   );
 };
@@ -57,17 +57,6 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     const setData = async () => {
-      // try {
-      //   const value = await AsyncStorage.getItem("username");
-      //   if (value !== null && value !== undefined) {
-      //     console.log("username:", value);
-      //     setName(JSON.parse(value));
-      //   } else {
-      //     return undefined;
-      //   }
-      // } catch (e) {
-      //   console.log(e);
-      // }
       const data = await getData("username");
       if (data !== undefined) setName(data);
     };
@@ -79,20 +68,20 @@ const Home = ({ navigation }) => {
       <Pressable onPress={() => navigation.navigate("Profile")}>
         <ProfileHeader name={name} />
       </Pressable>
-      <Flex
-        flexWrap="wrap"
-        flexDirection="row"
-        width="100%"
-        justifyContent="space-around"
-        alignItems={"center"}
-      >
-        <Tile name="Shower Timer" link="Home" navigation={navigation} />
-        <Tile name="Logbook" link="LogBook" navigation={navigation} />
-        <Tile name="Challenges" link="Challenges" navigation={navigation} />
-        <Tile name="Calculator" link="Calculator" navigation={navigation} />
-        <Tile name="Tips" link="Tips" navigation={navigation} />
-        <Tile name="Games" link="Games" navigation={navigation} />
-      </Flex>
+      <VStack width="100%" justifyContent="space-around" alignItems={"center"}>
+        <HStack>
+          <Tile name="Shower Timer" link="Home" navigation={navigation} />
+          <Tile name="Logbook" link="LogBook" navigation={navigation} />
+        </HStack>
+        <HStack>
+          <Tile name="Challenges" link="Challenges" navigation={navigation} />
+          <Tile name="Calculator" link="Calculator" navigation={navigation} />
+        </HStack>
+        <HStack>
+          <Tile name="Tips" link="Tips" navigation={navigation} />
+          <Tile name="Games" link="Games" navigation={navigation} />
+        </HStack>
+      </VStack>
     </Box>
   );
 };

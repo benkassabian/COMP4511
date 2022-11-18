@@ -47,13 +47,14 @@ export default function LoginPage({ navigation }) {
     if (email && password) {
       try {
         const userData = await getData("users");
+
         if (userData === undefined) {
           setError(`Invalid details`);
         } else {
           userData.data.map(async (user) => {
             if (user.email === email && user.password1 === password) {
               await storeData("username", user.name);
-              navigation.navigate("HomePage");
+              await navigation.navigate("HomePage");
             } else setError("Invalid details");
           });
         }

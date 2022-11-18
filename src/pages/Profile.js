@@ -15,7 +15,7 @@ import {
   ScrollView,
 } from "native-base";
 import Logo from "../components/Logo";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "../styles/global";
 import ProfileAvatar from "../components/Avatar";
 import NavBar from "../components/NavigationPanel";
@@ -61,7 +61,15 @@ const Badge = ({ imageUrl, label }) => {
   );
 };
 
-const BadgeImages = {
+//  additional badges can be added here
+const badgeNames = ["SuperSaverBadge", "OctostreakerBadge"];
+const badgeNameMap = {
+  SuperSaverBadge: "Super Saver",
+  OctostreakerBadge: "Octo Streaker",
+};
+const badgeImageMap = {
+  "Drip Detective":
+    "https://static.vecteezy.com/system/resources/previews/003/575/286/non_2x/cute-shark-swimming-cartoon-icon-illustration-free-vector.jpg",
   "Super Saver":
     "https://static.vecteezy.com/system/resources/previews/003/487/356/non_2x/money-bag-cash-coins-money-and-clock-payment-icon-cartoon-time-is-money-background-concept-free-vector.jpg",
   "Octo Streaker":
@@ -72,20 +80,35 @@ const Profile = () => {
   const [badges, setBadges] = useState([]);
   const [name, setName] = useState(undefined);
 
-  useEffect(() => {
-    const getData = async () => {
-      const badgeData = await getBadges();
-      if (badgeData !== undefined) await setBadges(badgeData);
+  const setData = useCallback(async () => {
+    // setting name
+    const username = await getName();
+    if (username !== undefined) setName(username);
 
-      const nameData = await getName();
-      if (nameData !== undefined) setName(nameData);
-    };
-    getData();
+    // retrieving badges
+    setBadges([]);
+    badgeNames.map(async (name, i) => {
+      const data = await getData(name);
+      console.log("isbadge ", name, data);
+      if (data !== undefined) {
+        await setBadges((prev) => [...prev, badgeNameMap[name]]);
+        console.log(badges);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    setData();
   }, []);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <ScrollView height={"100%"} bgColor="#F3EAFE">
+      <View
+        alignItems="center"
+        w="100%"
+        pt="20"
+        // px="4"
+      >
         <ProfileAvatar />
         <Text fontSize="38" fontWeight="thin">
           {name || ""}
@@ -106,13 +129,17 @@ const Profile = () => {
           overflowX="wrap"
           overflowY="scroll"
         >
+          <Badge
+            imageUrl={badgeImageMap["Drip Detective"]}
+            label={"Drip Detective"}
+          />
           {badges.length > 0 ? (
             badges.map((badge, key) => (
-              <Badge key={key} imageUrl={BadgeImages[badge]} label={badge} />
+              <Badge key={key} imageUrl={badgeImageMap[badge]} label={badge} />
             ))
           ) : (
-            <Text textAlign={"center"} fontSize="lg">
-              You do not own any badges, head over to challenges to earn some!
+            <Text textAlign={"center"} italic={true} fontSize="lg">
+              Head over to challenges to earn more badges!
             </Text>
           )}
         </Flex>

@@ -31,26 +31,6 @@ export const getEmail = async () => {
   return await getData("email");
 };
 
-const badgeNameMap = {
-  SuperSaverBadge: "Super Saver",
-  OctostreakerBadge: "Octo Streaker",
-};
-
-//  additional badges can be added here
-export const getBadges = async () => {
-  const badges = [];
-  const badgeNames = ["SuperSaverBadge", "OctostreakerBadge"];
-  badgeNames.map(async (name, i) => {
-    const badge = await getData(name);
-    console.log("isbadge", badge);
-    if (badge === true) {
-      badges.push(badgeNameMap[name]);
-      console.log(badges);
-    }
-    if (i == badgeNames.length - 1) return badges;
-  });
-};
-
 export const clearData = async () => {
   try {
     await AsyncStorage.removeItem("badges");
@@ -66,9 +46,18 @@ export const clearData = async () => {
 // TO DO: password hashing
 // [{name: 'name', email: 'email', password1...}]
 export const storeUser = async (user) => {
-  const userData = await getData("users");
-  if (userData === undefined) {
-    await storeData("users", { data: [user] });
+  try {
+    var userData = await getData("users");
+    if (userData === undefined) {
+      await storeData("users", { data: [user] });
+    } else {
+      console.log(userData.data);
+      userData["data"].push(user);
+      console.log(userData);
+      await storeData("users", userData);
+    }
+  } catch (e) {
+    console.log(e);
   }
 };
 
