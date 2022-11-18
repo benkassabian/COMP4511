@@ -88,7 +88,7 @@ const Profile = () => {
     // retrieving badges
     setBadges([]);
     badgeNames.map(async (name, i) => {
-      const data = await getData(name);
+      const data = (await getData(name)) === "true";
       console.log("isbadge ", name, data);
       if (data !== undefined) {
         await setBadges((prev) => [...prev, badgeNameMap[name]]);
@@ -129,10 +129,7 @@ const Profile = () => {
           overflowX="wrap"
           overflowY="scroll"
         >
-          <Badge
-            imageUrl={badgeImageMap["Drip Detective"]}
-            label={"Drip Detective"}
-          />
+          <Badge imageUrl={badgeImageMap["Drip Detective"]} label={"Drip Detective"} />
           {badges.length > 0 ? (
             badges.map((badge, key) => (
               <Badge key={key} imageUrl={badgeImageMap[badge]} label={badge} />
