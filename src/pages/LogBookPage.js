@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Box, Center, Text, useToast } from "native-base";
+import { Box, Center, Text, useToast, HStack } from "native-base";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import Header from "../components/Header";
@@ -23,17 +23,13 @@ export default function LogBookPage({ navigation }) {
   };
 
   return (
-    <Center h="97%" w="100%">
-      <Box safeArea p="2" h="100%" w="90%" maxW="320">
-        <Center>
-          <Header heading={"Logbook"} navigation={navigation} />
-        </Center>
-
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
+      <Header heading={"Logbook"} navigation={navigation} />
+      <Center px="4" w="100%" h="86%" space="4">
+        <Text mt="8" fontSize="lg" fontWeight="semibold">
+          Did you wash the dishes today?
+        </Text>
         <Box>
-          <Text fontSize="18" fontWeight="semibold">
-            Did you wash the dishes today?
-          </Text>
-
           <TouchableOpacity
             style={{
               minHeight: "7%",
@@ -107,83 +103,81 @@ export default function LogBookPage({ navigation }) {
           </TouchableOpacity>
         </Box>
 
-        <Box>
-          <Text marginTop="5" fontSize="18" fontWeight="semibold">
-            Did you wash your car today?
-          </Text>
+        <Text mt="8" fontSize="lg" fontWeight="semibold">
+          Did you wash your car today?
+        </Text>
 
-          <TouchableOpacity
-            style={{
-              minHeight: "7%",
-              minWidth: "100%",
-              padding: 20,
-              backgroundColor: secondAnswer === 1 ? "#9ca9d4" : "#e8ebf5",
-              borderRadius: "12px",
-              marginTop: 14,
-              marginBottom: 3,
-              alignItems: "center",
-              borderColor: "#989CA0",
-              borderWidth: "1",
-            }}
-            onPress={() => {
-              if (secondAnswer === 1) {
-                setSecondAnswer(-1);
-              } else {
-                setSecondAnswer(1);
-              }
-            }}
-          >
-            <Text fontSize="16.5">Yes, with a hose</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            minHeight: "7%",
+            minWidth: "100%",
+            padding: 20,
+            backgroundColor: secondAnswer === 1 ? "#9ca9d4" : "#e8ebf5",
+            borderRadius: "12px",
+            marginTop: 14,
+            marginBottom: 3,
+            alignItems: "center",
+            borderColor: "#989CA0",
+            borderWidth: "1",
+          }}
+          onPress={() => {
+            if (secondAnswer === 1) {
+              setSecondAnswer(-1);
+            } else {
+              setSecondAnswer(1);
+            }
+          }}
+        >
+          <Text fontSize="16.5">Yes, with a hose</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={{
-              minHeight: "7%",
-              minWidth: "100%",
-              padding: 20,
-              backgroundColor: secondAnswer === 2 ? "#9ca9d4" : "#e8ebf5",
-              borderRadius: "12px",
-              marginTop: 14,
-              marginBottom: 3,
-              alignItems: "center",
-              borderColor: "#989CA0",
-              borderWidth: "1",
-            }}
-            onPress={() => {
-              if (secondAnswer === 2) {
-                setSecondAnswer(-1);
-              } else {
-                setSecondAnswer(2);
-              }
-            }}
-          >
-            <Text fontSize="16.5">Yes, with a bucket of water</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            minHeight: "7%",
+            minWidth: "100%",
+            padding: 20,
+            backgroundColor: secondAnswer === 2 ? "#9ca9d4" : "#e8ebf5",
+            borderRadius: "12px",
+            marginTop: 14,
+            marginBottom: 3,
+            alignItems: "center",
+            borderColor: "#989CA0",
+            borderWidth: "1",
+          }}
+          onPress={() => {
+            if (secondAnswer === 2) {
+              setSecondAnswer(-1);
+            } else {
+              setSecondAnswer(2);
+            }
+          }}
+        >
+          <Text fontSize="16.5">Yes, with a bucket of water</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity
-            style={{
-              minHeight: "7%",
-              minWidth: "100%",
-              padding: 20,
-              backgroundColor: secondAnswer === 3 ? "#9ca9d4" : "#e8ebf5",
-              borderRadius: "12px",
-              marginTop: 14,
-              marginBottom: 3,
-              alignItems: "center",
-              borderColor: "#989CA0",
-              borderWidth: "1",
-            }}
-            onPress={() => {
-              if (secondAnswer === 3) {
-                setSecondAnswer(-1);
-              } else {
-                setSecondAnswer(3);
-              }
-            }}
-          >
-            <Text fontSize="16.5">Not today</Text>
-          </TouchableOpacity>
-        </Box>
+        <TouchableOpacity
+          style={{
+            minHeight: "7%",
+            minWidth: "100%",
+            padding: 20,
+            backgroundColor: secondAnswer === 3 ? "#9ca9d4" : "#e8ebf5",
+            borderRadius: "12px",
+            marginTop: 14,
+            marginBottom: 3,
+            alignItems: "center",
+            borderColor: "#989CA0",
+            borderWidth: "1",
+          }}
+          onPress={() => {
+            if (secondAnswer === 3) {
+              setSecondAnswer(-1);
+            } else {
+              setSecondAnswer(3);
+            }
+          }}
+        >
+          <Text fontSize="16.5">Not today</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={{
@@ -239,7 +233,7 @@ export default function LogBookPage({ navigation }) {
             Save
           </Text>
         </TouchableOpacity>
-      </Box>
-    </Center>
+      </Center>
+    </Box>
   );
 }

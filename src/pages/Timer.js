@@ -34,11 +34,11 @@ export default function Timer({ navigation }) {
     <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
       <Header heading={"Timer"} navigation={navigation} />
 
-      <VStack safeArea p="2" h="100%" w="100%" mt="2" px="4" space="4">
+      <VStack safeArea py="2" h="100%" w="100%" mt="2" px="4" space="4">
         <Center w="100%">
           <CountdownCircleTimer
             isPlaying={isPlaying}
-            duration={duration}
+            duration={duration*60}
             colors={['#AEAEDA', '#8888D7', '#B42934']}
             colorsTime={[duration, duration / 2, 0]}
             size={320}

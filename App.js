@@ -46,7 +46,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer >
-        <Stack.Navigator initialRouteName="HomePage" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="SignUpPage" component={SignUpPage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
