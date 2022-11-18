@@ -97,7 +97,7 @@ export default function SignUpPage({ navigation }) {
               setFormData({ ...formData, password2: value })
             }
           />
-          <Button size="lg" mt="4" onPress={handleSignUp}>
+          <Button size="lg" rounded="3xl" mt="4" onPress={handleSignUp}>
             Sign Up
           </Button>
           <HStack mt="2" justifyContent="center">

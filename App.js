@@ -22,12 +22,11 @@ import MetricsPage from "./src/pages/MetricsPage";
 import Settings from "./src/pages/Settings/Settings";
 import AccountSettings from "./src/pages/Settings/Account";
 import CalculatorSettings from "./src/pages/Settings/Calculator";
-import { ViewBase } from "react-native";
-import NavBar from "./src/components/NavigationPanel";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import GameHomeScreen from "./src/pages/GameHomeScreen";
 import LogBookPage from "./src/pages/LogBookPage";
 import ChallengesPage from "./src/pages/ChallengesPage";
+import Timer from "./src/pages/Timer";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -47,7 +46,7 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer >
-        <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="HomePage" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="SignUpPage" component={SignUpPage} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
@@ -61,6 +60,7 @@ export default function App() {
           <Tab.Screen name="Challenges" component={ChallengesPage} />
           <Tab.Screen name="AccountSettings" component={AccountSettings} />
           <Tab.Screen name="CalculatorSettings" component={CalculatorSettings}/>
+          <Tab.Screen name="Timer" component={Timer}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

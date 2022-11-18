@@ -11,11 +11,14 @@ import {
   Center,
   Alert,
   Stack,
+  Icon
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
 import styles from "../styles/global";
 import { getData, storeData } from "../utils/store";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+
 
 // https://docs.nativebase.io/login-signup-forms
 // https://docs.nativebase.io/form
@@ -117,20 +120,25 @@ export default function LoginPage({ navigation }) {
               setError(undefined);
               setFormData({ ...formData, password: value });
             }}
+            // InputRightElement={
+            //   <Button
+            //     size="md"
+            //     rounded="none"
+            //     w="1/5"
+            //     bg="coolGray.400"
+            //     h="full"
+            //     onPress={handleClick}
+            //   >
+            //     {show ? "Hide" : "Show"}
+            //   </Button>
+            // }
             InputRightElement={
-              <Button
-                size="md"
-                rounded="none"
-                w="1/5"
-                bg="coolGray.400"
-                h="full"
-                onPress={handleClick}
-              >
-                {show ? "Hide" : "Show"}
-              </Button>
+            <Pressable onPress={() => setShow(!show)}>
+              <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="6" color="muted.400" />
+            </Pressable>
             }
           />
-          <Button size="lg" mt="4" onPress={handleLogin}>
+          <Button size="lg" rounded="3xl" mt="4" onPress={handleLogin}>
             Log In
           </Button>
           <HStack mt="2" justifyContent="center">

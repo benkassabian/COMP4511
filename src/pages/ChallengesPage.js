@@ -198,6 +198,7 @@ export default function ChallengesPage({ navigation }) {
         </TouchableOpacity>
         <Button
           size="lg"
+          rounded="3xl"
           mt="2"
           onPress={() => {
             // no challenges selected
