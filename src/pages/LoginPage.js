@@ -11,14 +11,13 @@ import {
   Center,
   Alert,
   Stack,
-  Icon
+  Icon,
 } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
 import styles from "../styles/global";
 import { getData, storeData } from "../utils/store";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-
 
 // https://docs.nativebase.io/login-signup-forms
 // https://docs.nativebase.io/form
@@ -54,11 +53,15 @@ export default function LoginPage({ navigation }) {
         if (userData === undefined) {
           setError(`Invalid details`);
         } else {
-          userData.data.map(async (user) => {
+          await userData.data.map(async (user, i) => {
             if (user.email === email && user.password1 === password) {
+              setError(undefined);
               await storeData("username", user.name);
+              await storeData("email", user.email);
               await navigation.navigate("HomePage");
-            } else setError("Invalid details");
+            } else if (i === userData.data.length - 1) {
+              setError("Invalid details");
+            }
           });
         }
       } catch (e) {
@@ -120,22 +123,19 @@ export default function LoginPage({ navigation }) {
               setError(undefined);
               setFormData({ ...formData, password: value });
             }}
-            // InputRightElement={
-            //   <Button
-            //     size="md"
-            //     rounded="none"
-            //     w="1/5"
-            //     bg="coolGray.400"
-            //     h="full"
-            //     onPress={handleClick}
-            //   >
-            //     {show ? "Hide" : "Show"}
-            //   </Button>
-            // }
             InputRightElement={
-            <Pressable onPress={() => setShow(!show)}>
-              <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="6" color="muted.400" />
-            </Pressable>
+              <Pressable onPress={() => setShow(!show)}>
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="6"
+                  color="muted.400"
+                />
+              </Pressable>
             }
           />
           <Button size="lg" rounded="3xl" mt="4" onPress={handleLogin}>

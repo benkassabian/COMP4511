@@ -14,6 +14,7 @@ import {
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import Header from "../components/Header";
+import { storeData } from "../utils/store";
 
 export default function ChallengesPage({ navigation }) {
   const toast = useToast();
@@ -34,12 +35,8 @@ export default function ChallengesPage({ navigation }) {
   const [fourthChallengeDone, setFourthChallengeDone] = useState(false);
 
   // user earns badge
-  const storeData = async () => {
-    try {
-      await AsyncStorage.setItem("SuperSaverBadge", "true");
-    } catch (e) {
-      console.log(e);
-    }
+  const addBadge = async () => {
+    await storeData("SuperSaverBadge", true);
   };
 
   return (
@@ -200,7 +197,7 @@ export default function ChallengesPage({ navigation }) {
           size="lg"
           rounded="3xl"
           mt="2"
-          onPress={() => {
+          onPress={async () => {
             // no challenges selected
             if (
               firstChallengeDone === false &&
@@ -231,7 +228,7 @@ export default function ChallengesPage({ navigation }) {
                   placement: "top",
                   bgColor: "success.600",
                 });
-                storeData();
+                await addBadge();
               }
             }
             // some challenges completed

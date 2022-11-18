@@ -15,11 +15,13 @@ import {
   ScrollView,
 } from "native-base";
 import Logo from "../components/Logo";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Component, useCallback, useEffect, useState } from "react";
 import styles from "../styles/global";
 import ProfileAvatar from "../components/Avatar";
 import NavBar from "../components/NavigationPanel";
 import { getBadges, getData, getName } from "../utils/store";
+import { badgeImageMap, badgeNameMap, badgeNames } from "../utils/badges";
+import { useFocusEffect } from "@react-navigation/native";
 
 const ProfileTile = ({ number, text }) => {
   return (
@@ -61,22 +63,7 @@ const Badge = ({ imageUrl, label }) => {
   );
 };
 
-//  additional badges can be added here
-const badgeNames = ["SuperSaverBadge", "OctostreakerBadge"];
-const badgeNameMap = {
-  SuperSaverBadge: "Super Saver",
-  OctostreakerBadge: "Octo Streaker",
-};
-const badgeImageMap = {
-  "Drip Detective":
-    "https://static.vecteezy.com/system/resources/previews/003/575/286/non_2x/cute-shark-swimming-cartoon-icon-illustration-free-vector.jpg",
-  "Super Saver":
-    "https://static.vecteezy.com/system/resources/previews/003/487/356/non_2x/money-bag-cash-coins-money-and-clock-payment-icon-cartoon-time-is-money-background-concept-free-vector.jpg",
-  "Octo Streaker":
-    "https://static.vecteezy.com/system/resources/previews/006/153/382/non_2x/cute-octopus-cartoon-character-holding-book-and-pencil-free-vector.jpg",
-};
-
-const Profile = () => {
+const Profile = (navigation) => {
   const [badges, setBadges] = useState([]);
   const [name, setName] = useState(undefined);
 
@@ -86,20 +73,25 @@ const Profile = () => {
     if (username !== undefined) setName(username);
 
     // retrieving badges
-    setBadges([]);
+    // setBadges([]);
     badgeNames.map(async (name, i) => {
-      const data = (await getData(name)) === "true";
+      const data = await getData(name);
       console.log("isbadge ", name, data);
-      if (data !== undefined) {
+      if (data === true) {
         await setBadges((prev) => [...prev, badgeNameMap[name]]);
         console.log(badges);
       }
     });
   }, []);
 
-  useEffect(() => {
-    setData();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      setData();
+      return () => {
+        setBadges([]);
+      };
+    }, [])
+  );
 
   return (
     <ScrollView height={"100%"} bgColor="#F3EAFE">
@@ -129,7 +121,10 @@ const Profile = () => {
           overflowX="wrap"
           overflowY="scroll"
         >
-          <Badge imageUrl={badgeImageMap["Drip Detective"]} label={"Drip Detective"} />
+          <Badge
+            imageUrl={badgeImageMap["Drip Detective"]}
+            label={"Drip Detective"}
+          />
           {badges.length > 0 ? (
             badges.map((badge, key) => (
               <Badge key={key} imageUrl={badgeImageMap[badge]} label={badge} />

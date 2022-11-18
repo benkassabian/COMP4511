@@ -1,8 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { badgeNameMap, badgeNames } from "./badges";
 
 export const storeData = async (name, value) => {
   try {
     await AsyncStorage.setItem(name, JSON.stringify(value));
+    console.log("stored", name, JSON.stringify(value));
   } catch (e) {
     console.log(e);
   }
@@ -33,11 +35,16 @@ export const getEmail = async () => {
 
 export const clearData = async () => {
   try {
-    await AsyncStorage.removeItem("badges");
+    console.log("CLEAR DATA");
     await AsyncStorage.removeItem("username");
     await AsyncStorage.removeItem("email");
+    await badgeNames.map(async (name) => {
+      await AsyncStorage.removeItem(name);
+      const data = await getData(name);
+    });
     return true;
-  } catch (exception) {
+  } catch (e) {
+    console.log(e);
     return false;
   }
 };
@@ -67,8 +74,35 @@ export const getUser = async (email) => {
   if (userData === undefined) {
     return undefined;
   }
-  userData.map((user) => {
-    if (user.email === email) return user;
+  var data = undefined;
+  await userData.data.map((user, i) => {
+    console.log("checking user data", user.email === email);
+    if (user.email === email) {
+      console.log("found", user);
+      data = user;
+    }
   });
-  return undefined;
+  return data;
+};
+
+export const replaceUser = async (originalData, newData) => {
+  const userData = await getData("users");
+  if (userData === undefined) {
+    return undefined;
+  }
+
+  // remove user from database
+  var data = [];
+  await userData.data.map((user, i) => {
+    if (user === originalData) {
+      data.push(user);
+    }
+  });
+
+  // add new data
+  data.push(newData);
+  console.log("newdata", data);
+
+  // add new user
+  await storeData("users", { data: data });
 };
