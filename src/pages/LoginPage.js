@@ -1,26 +1,9 @@
-import {
-  Pressable,
-  Box,
-  Heading,
-  Text,
-  Link,
-  HStack,
-  VStack,
-  Input,
-  Button,
-  Center,
-  Alert,
-  Stack,
-  Icon,
-} from "native-base";
+import { Pressable, Box, Heading, Text, Link, HStack, VStack, Input, Button, Center, Alert, Icon } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
-import styles from "../styles/global";
 import { getData, storeData } from "../utils/store";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-// https://docs.nativebase.io/login-signup-forms
-// https://docs.nativebase.io/form
 const ErrorAlert = ({ message }) => {
   return (
     <Alert rounded="xl" status="error">
@@ -41,8 +24,6 @@ export default function LoginPage({ navigation }) {
   const [formData, setFormData] = React.useState({});
   const [error, setError] = React.useState(undefined);
 
-  const handleClick = () => setShow(!show);
-
   const handleLogin = async () => {
     // ensure formdata has correct fields
     const { email, password } = formData;
@@ -58,7 +39,7 @@ export default function LoginPage({ navigation }) {
               setError(undefined);
               await storeData("username", user.name);
               await storeData("email", user.email);
-              await navigation.navigate("HomePage");
+              await navigation.navigate("Home");
             } else if (i === userData.data.length - 1) {
               setError("Invalid details");
             }
@@ -75,7 +56,7 @@ export default function LoginPage({ navigation }) {
     <Center bgColor="#F3EAFE" w="100%" h="100%">
       <Box safeArea p="2" w="90%" maxW="320">
         <Center>
-          <Pressable onPress={() => navigation.navigate("LandingPage")}>
+          <Pressable onPress={() => navigation.navigate("Landing")}>
             <Logo />
           </Pressable>
           <Heading
@@ -155,7 +136,7 @@ export default function LoginPage({ navigation }) {
                 fontWeight: "medium",
                 fontSize: "md",
               }}
-              onPress={() => navigation.navigate("SignUpPage")}
+              onPress={() => navigation.navigate("Register")}
             >
               Sign Up
             </Link>

@@ -125,10 +125,9 @@ const JumpingGame = ({ navigation }) => {
 
     <>
     
-      <SafeAreaView style={{ flex: 1 }}>
-        <Center>
-          <Header heading={"Water-Tac-Toe"} navigation={navigation} />
-        </Center>
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4" pt="6">
+        <Header heading={"Water-Tac-Toe"} navigation={navigation} link={'Games'}/>
+       
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 32 }}>{!winnerSymbol && `It's  ${turnSymbol}'s turn`}</Text>
           <Text style={{ fontSize: 32 }}>{winnerSymbol}</Text>
@@ -163,7 +162,7 @@ const JumpingGame = ({ navigation }) => {
           })}
         </View>
 
-      </SafeAreaView>
+      </Box>
     </>
   );
 };

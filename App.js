@@ -1,68 +1,154 @@
-import * as React from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text } from "react-native";
-import { NativeBaseProvider } from "native-base";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NativeBaseProvider } from "native-base";
 
-import styles from "./src/styles/global";
 import theme from "./src/styles/theme";
-import background from "./assets/background.png";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-import LandingPage from "./src/pages/LandingPage";
-import LoginPage from "./src/pages/LoginPage";
-import SignUpPage from "./src/pages/SignUpPage";
+// startup stack
+import Landing from "./src/pages/LandingPage";
+import Login from "./src/pages/LoginPage";
+import Register from "./src/pages/SignUpPage";
+
+// home stack
 import Home from "./src/pages/Home";
-import Profile from "./src/pages/Profile";
-import Quiz from "./src/pages/Quiz";
-import JumpingGame from "./src/pages/JumpingGame";
+import Timer from "./src/pages/Timer";
+import Logbook from "./src/pages/LogBookPage";
+import Challenges from "./src/pages/ChallengesPage";
 import Calculator from "./src/pages/Calculator";
-import TipsPage from "./src/pages/TipsPage";
-import MetricsPage from "./src/pages/MetricsPage";
+import Tips from "./src/pages/TipsPage";
+import GameHomeScreen from "./src/pages/GameHomeScreen";
+
+// game stack
+import JumpingGame from "./src/pages/JumpingGame";
+import Quiz from "./src/pages/Quiz";
+
+// settings stack
 import Settings from "./src/pages/Settings/Settings";
 import AccountSettings from "./src/pages/Settings/Account";
 import CalculatorSettings from "./src/pages/Settings/Calculator";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import GameHomeScreen from "./src/pages/GameHomeScreen";
-import LogBookPage from "./src/pages/LogBookPage";
-import ChallengesPage from "./src/pages/ChallengesPage";
-import Timer from "./src/pages/Timer";
+
+// standalone
+import Metrics from "./src/pages/MetricsPage";
+import Profile from "./src/pages/Profile";
+
+// const HomePage = () => {
+//   return (
+//     <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveTintColor: "#8888D7", headerShown: true }}>
+//       <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Metrics" component={MetricsPage} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Profile" component={Profile} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
+//     </Tab.Navigator>
+//   );
+// };
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomePage = () => {
+const screenOptionStyle = {
+  headerStyle: {
+    backgroundColor: "#F3EAFE",
+  },
+  headerTintColor: "black",
+  headerBackTitle: "Back",
+};
+
+// const GameScreenOptionStyle = {
+//   headerStyle: {
+//     backgroundColor: "#F3EAFE",
+//   },
+//   headerTintColor: "black",
+//   headerBackTitle: "Back to Games",
+// };
+
+// games stack
+const GamesStackNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveTintColor: "#8888D7", headerShown: false }}>
-      <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
-      <Tab.Screen name="Metrics" component={MetricsPage} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
-      <Tab.Screen name="Profile" component={Profile} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
-      <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
+    <Stack.Navigator screenOptions={{ headerShown: false}}>
+      <Stack.Screen name="Games" component={GameHomeScreen} />
+      <Stack.Screen name="Water-Tac-Toe" component={JumpingGame} />
+      <Stack.Screen name="Knowledge Quiz" component={Quiz} />
+    </Stack.Navigator>
+  );
+};
+
+// home stack
+const HomeStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Shower Timer" component={Timer} />
+      <Stack.Screen name="Logbook" component={Logbook} />
+      <Stack.Screen name="Challenges" component={Challenges} />
+      <Stack.Screen name="Calculator" component={Calculator} />
+      <Stack.Screen name="Tips" component={Tips} />
+      <Stack.Screen name="Games" component={GamesStackNavigator} />
+    </Stack.Navigator>
+  );
+};
+
+// settings stack
+const SettingsStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Account Settings" component={AccountSettings} />
+      <Stack.Screen name="Calculator Settings" component={CalculatorSettings} />
+    </Stack.Navigator>
+  );
+};
+
+// metrics stack
+const MetricsStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Metrics" component={Metrics} />
+    </Stack.Navigator>
+  );
+};
+
+// profile stack
+const ProfileStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptionStyle}>
+      <Stack.Screen name="Profile" component={Profile} />
+    </Stack.Navigator>
+  );
+};
+
+// tabs
+const BottomTabNavigator = () => {
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Home" component={HomeStackNavigator} />
+      <Tab.Screen name="Metrics" component={MetricsStackNavigator} />
+      <Tab.Screen name="Profile" component={ProfileStackNavigator} />
+      <Tab.Screen name="Settings" component={SettingsStackNavigator} />
     </Tab.Navigator>
+  );
+};
+
+// startup
+const StartStackNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Landing" >
+      <Stack.Screen name="Landing" component={Landing} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Home" component={BottomTabNavigator} />
+    </Stack.Navigator>
   );
 };
 
 export default function App() {
   return (
-    <NativeBaseProvider theme={theme}>
-      <NavigationContainer >
-        <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="LandingPage" component={LandingPage} />
-          <Stack.Screen name="SignUpPage" component={SignUpPage} />
-          <Stack.Screen name="LoginPage" component={LoginPage} />
-          <Stack.Screen name="HomePage" component={HomePage} />
-          <Tab.Screen name="Calculator" component={Calculator} />
-          <Tab.Screen name="JumpingGame" component={JumpingGame} />
-          <Tab.Screen name="Games" component={GameHomeScreen} />
-          <Tab.Screen name="Quiz" component={Quiz} />
-          <Tab.Screen name="Tips" component={TipsPage} />
-          <Tab.Screen name="LogBook" component={LogBookPage} />
-          <Tab.Screen name="Challenges" component={ChallengesPage} />
-          <Tab.Screen name="AccountSettings" component={AccountSettings} />
-          <Tab.Screen name="CalculatorSettings" component={CalculatorSettings}/>
-          <Tab.Screen name="Timer" component={Timer}/>
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NativeBaseProvider theme={theme} >
+      <NavigationContainer>
+        <StartStackNavigator />
+      </NavigationContainer> 
     </NativeBaseProvider>
   );
-}
+};

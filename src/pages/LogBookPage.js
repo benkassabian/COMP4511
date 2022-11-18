@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Box, Center, Text, useToast, HStack } from "native-base";
+import { Box, Center, Text, useToast, Button } from "native-base";
 import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import Header from "../components/Header";
@@ -23,10 +23,9 @@ export default function LogBookPage({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-      <Header heading={"Logbook"} navigation={navigation} />
-      <Center px="4" w="100%" h="86%" space="4">
-        <Text mt="8" fontSize="lg" fontWeight="semibold">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4" >
+      <Center px="4" w="100%" h="100%" space="4">
+        <Text fontSize="lg" fontWeight="semibold">
           Did you wash the dishes today?
         </Text>
         <Box>
@@ -179,19 +178,8 @@ export default function LogBookPage({ navigation }) {
           <Text fontSize="16.5">Not today</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{
-            minHeight: "6%",
-            minWidth: "100%",
-            padding: 13,
-            backgroundColor: "#9ca9d4",
-            borderRadius: "12px",
-
-            marginTop: 22,
-            alignItems: "center",
-            borderColor: "#989CA0",
-            borderWidth: "1",
-          }}
+        <Button
+          rounded="3xl" mt="6" size="lg" p="4" w="100%"
           onPress={() => {
             if (firstAnswer === -1 || secondAnswer === -1) {
               if (!toast.isActive(errorId)) {
@@ -229,10 +217,8 @@ export default function LogBookPage({ navigation }) {
             }
           }}
         >
-          <Text fontSize="16.5" color="#ffffff">
-            Save
-          </Text>
-        </TouchableOpacity>
+          <Text style={{ fontSize: 20, color: "white" }}>Save</Text>
+        </Button>
       </Center>
     </Box>
   );
