@@ -70,7 +70,7 @@ const Home = ({ navigation }) => {
       </Pressable>
       <VStack width="100%" justifyContent="space-around" alignItems={"center"}>
         <HStack>
-          <Tile name="Shower Timer" link="Home" navigation={navigation} />
+          <Tile name="Shower Timer" link="Timer" navigation={navigation} />
           <Tile name="Logbook" link="LogBook" navigation={navigation} />
         </HStack>
         <HStack>
