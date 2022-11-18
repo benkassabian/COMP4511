@@ -1,4 +1,4 @@
-import { Center, Heading, Input, Button, VStack, Icon } from "native-base";
+import { Center, Box, Heading, Text, Input, Button, VStack, Icon } from "native-base";
 
 import styles from "../../styles/global";
 import React, { Children, useCallback, useEffect, useState } from "react";
@@ -43,13 +43,10 @@ export default function AccountSettings({ navigation }) {
   };
 
   return (
-    <Center style={styles.container}>
-      <Header
-        heading={"Account Settings"}
-        navigation={navigation}
-        link="Settings"
-      />
-      <VStack width="100%" space={5}>
+    <Center bgColor="#F3EAFE" style={styles.container}>
+      <VStack width="100%" space="3" px="2">
+        <Box>
+        <Text fontSize="md" p="2" bold>Email Address</Text>
         <Input
           size="md"
           px="6"
@@ -61,7 +58,11 @@ export default function AccountSettings({ navigation }) {
           onChangeText={(value) => {
             setFormData({ ...formData, name: value });
           }}
+          isDisabled={true}
         />
+        </Box>
+        <Box> 
+        <Text fontSize="md" p="2" bold>Name</Text>
         <Input
           size="md"
           px="6"
@@ -74,6 +75,10 @@ export default function AccountSettings({ navigation }) {
             setFormData({ ...formData, email: value });
           }}
         />
+        </Box>
+        <Box> 
+        <Text fontSize="md" p="2" bold>Password</Text>
+
         <Input
           size="md"
           px="6"
@@ -102,10 +107,12 @@ export default function AccountSettings({ navigation }) {
             </Pressable>
           }
         />
+
+        </Box>
       </VStack>
       <Button
         width="100%"
-        rounded="xl"
+        rounded="3xl"
         size="lg"
         mt="auto"
         onPress={handleSubmit}

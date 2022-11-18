@@ -37,7 +37,7 @@ const LogoutPopup = ({ isOpen, onClose, cancelRef, navigation }) => {
               colorScheme="danger"
               onPress={async () => {
                 await clearData();
-                navigation.navigate("LandingPage");
+                navigation.navigate("Landing");
               }}
             >
               Log Out
@@ -61,20 +61,19 @@ export default function Settings({ navigation }) {
 
   const cancelRef = React.useRef(null);
   return (
-    <Flex
+    <Flex bgColor="#F3EAFE"
       style={styles.container}
       _text={{
         fontSize: "xl",
       }}
     >
-      <Header heading="Settings" />
       <VStack width="100%" divider={<Divider />}>
-        <MenuItem onClick={() => navigation.navigate("AccountSettings")}>
+        <MenuItem onClick={() => navigation.navigate("Account Settings")}>
           <MaterialIcon name="person-outline" size={30} />
           <Text fontSize="xl">Account</Text>
           <MaterialIcon name="chevron-right" size={30} />
         </MenuItem>
-        <MenuItem onClick={() => navigation.navigate("CalculatorSettings")}>
+        <MenuItem onClick={() => navigation.navigate("Calculator Settings")}>
           <FeatherIcon name="droplet" size={30} />
           <Text fontSize="xl">Flow Rate</Text>
           <MaterialIcon name="chevron-right" size={30} />

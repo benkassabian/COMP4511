@@ -59,9 +59,8 @@ export default function CalculatorSettings({ navigation }) {
   };
 
   return (
-    <Center style={styles.container}>
-      <Header heading="Flow Rate" navigation={navigation} link="Settings" />
-      <VStack width="100%" divider={<Divider />} space={5}>
+    <Center bgColor="#F3EAFE" style={styles.container}>
+      <VStack width="100%" space="3" divider={<Divider />}>
         <MenuItem>
           <FeatherIcon name="droplet" size={30} />
           <Text fontSize="xl">Use Custom Flow Rate?</Text>
@@ -85,7 +84,7 @@ export default function CalculatorSettings({ navigation }) {
       </VStack>
       <Button
         width="100%"
-        rounded="xl"
+        rounded="3xl"
         size="lg"
         mt="auto"
         onPress={handleSave}
