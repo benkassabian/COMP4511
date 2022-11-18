@@ -86,7 +86,7 @@ const Home = ({ navigation }) => {
         justifyContent="space-around"
         alignItems={"center"}
       >
-        <Tile name="Shower Timer" link="Home" navigation={navigation} />
+        <Tile name="Shower Timer" link="Timer" navigation={navigation} />
         <Tile name="Logbook" link="LogBook" navigation={navigation} />
         <Tile name="Challenges" link="Challenges" navigation={navigation} />
         <Tile name="Calculator" link="Calculator" navigation={navigation} />
