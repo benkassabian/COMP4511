@@ -1,22 +1,9 @@
-import {
-  Pressable,
-  Box,
-  Heading,
-  Text,
-  Link,
-  HStack,
-  VStack,
-  Input,
-  Button,
-  Center,
-} from "native-base";
+import { Pressable, Box, Heading, Text, Link, HStack, VStack, Input, Button, Center, } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
 import { storeData, storeUser } from "../utils/store";
 import userDatabase from "../utils/userData.json";
 
-// https://docs.nativebase.io/login-signup-forms
-// https://docs.nativebase.io/form
 export default function SignUpPage({ navigation }) {
   const [formData, setFormData] = React.useState({});
 
@@ -25,14 +12,14 @@ export default function SignUpPage({ navigation }) {
     await storeData("username", formData.name);
     await storeData("email", formData.email);
     await storeUser(formData);
-    await navigation.navigate("HomePage");
+    await navigation.navigate("Home");
   };
 
   return (
     <Center bgColor="#F3EAFE" w="100%" h="100%">
       <Box safeArea p="2" w="90%" maxW="320">
         <Center>
-          <Pressable onPress={() => navigation.navigate("LandingPage")}>
+          <Pressable onPress={() => navigation.navigate("Landing")}>
             <Logo />
           </Pressable>
           <Heading
@@ -114,7 +101,7 @@ export default function SignUpPage({ navigation }) {
                 fontWeight: "medium",
                 fontSize: "sm",
               }}
-              onPress={() => navigation.navigate("LoginPage")}
+              onPress={() => navigation.navigate("Login")}
             >
               Log In
             </Link>

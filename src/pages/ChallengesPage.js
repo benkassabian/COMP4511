@@ -43,9 +43,8 @@ export default function ChallengesPage({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4">
-      <Header heading={"Challenges"} navigation={navigation} />
-      <HStack h="12" mb="4" pr="10">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4">
+      <HStack h="12" mt="8" mb="6" pr="10">
         <Image
           h="32"
           source={require("../../assets/VirtualCharacter.png")}
@@ -199,7 +198,7 @@ export default function ChallengesPage({ navigation }) {
         <Button
           size="lg"
           rounded="3xl"
-          mt="2"
+          mt="4"
           onPress={() => {
             // no challenges selected
             if (

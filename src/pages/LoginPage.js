@@ -1,27 +1,9 @@
-import {
-  Pressable,
-  Box,
-  Heading,
-  Text,
-  Link,
-  HStack,
-  VStack,
-  Input,
-  Button,
-  Center,
-  Alert,
-  Stack,
-  Icon
-} from "native-base";
+import { Pressable, Box, Heading, Text, Link, HStack, VStack, Input, Button, Center, Alert, Icon } from "native-base";
 import Logo from "../components/Logo";
 import React from "react";
-import styles from "../styles/global";
 import { getData, storeData } from "../utils/store";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-
-// https://docs.nativebase.io/login-signup-forms
-// https://docs.nativebase.io/form
 const ErrorAlert = ({ message }) => {
   return (
     <Alert rounded="xl" status="error">
@@ -42,8 +24,6 @@ export default function LoginPage({ navigation }) {
   const [formData, setFormData] = React.useState({});
   const [error, setError] = React.useState(undefined);
 
-  const handleClick = () => setShow(!show);
-
   const handleLogin = async () => {
     // ensure formdata has correct fields
     const { email, password } = formData;
@@ -57,7 +37,7 @@ export default function LoginPage({ navigation }) {
           userData.data.map(async (user) => {
             if (user.email === email && user.password1 === password) {
               await storeData("username", user.name);
-              await navigation.navigate("HomePage");
+              await navigation.navigate("Home");
             } else setError("Invalid details");
           });
         }
@@ -72,7 +52,7 @@ export default function LoginPage({ navigation }) {
     <Center bgColor="#F3EAFE" w="100%" h="100%">
       <Box safeArea p="2" w="90%" maxW="320">
         <Center>
-          <Pressable onPress={() => navigation.navigate("LandingPage")}>
+          <Pressable onPress={() => navigation.navigate("Landing")}>
             <Logo />
           </Pressable>
           <Heading
@@ -120,18 +100,6 @@ export default function LoginPage({ navigation }) {
               setError(undefined);
               setFormData({ ...formData, password: value });
             }}
-            // InputRightElement={
-            //   <Button
-            //     size="md"
-            //     rounded="none"
-            //     w="1/5"
-            //     bg="coolGray.400"
-            //     h="full"
-            //     onPress={handleClick}
-            //   >
-            //     {show ? "Hide" : "Show"}
-            //   </Button>
-            // }
             InputRightElement={
             <Pressable onPress={() => setShow(!show)}>
               <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="6" color="muted.400" />
@@ -155,7 +123,7 @@ export default function LoginPage({ navigation }) {
                 fontWeight: "medium",
                 fontSize: "md",
               }}
-              onPress={() => navigation.navigate("SignUpPage")}
+              onPress={() => navigation.navigate("Register")}
             >
               Sign Up
             </Link>

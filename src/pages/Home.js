@@ -1,15 +1,5 @@
 // TO DO: SARAH
-import {
-  Box,
-  Text,
-  HStack,
-  VStack,
-  View,
-  Image,
-  Pressable,
-  Heading,
-  Flex,
-} from "native-base";
+import { Box, Text, HStack, VStack, Image, Pressable, Heading, } from "native-base";
 import Logo from "../components/Logo";
 import React, { useEffect, useState } from "react";
 import ProfileAvatar from "../components/Avatar";
@@ -64,14 +54,14 @@ const Home = ({ navigation }) => {
   }, []);
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="84%" px="4">
       <Pressable onPress={() => navigation.navigate("Profile")}>
         <ProfileHeader name={name} />
       </Pressable>
       <VStack width="100%" justifyContent="space-around" alignItems={"center"}>
         <HStack>
-          <Tile name="Shower Timer" link="Timer" navigation={navigation} />
-          <Tile name="Logbook" link="LogBook" navigation={navigation} />
+          <Tile name="Shower Timer" link="Shower Timer" navigation={navigation} />
+          <Tile name="Logbook" link="Logbook" navigation={navigation} />
         </HStack>
         <HStack>
           <Tile name="Challenges" link="Challenges" navigation={navigation} />

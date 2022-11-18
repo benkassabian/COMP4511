@@ -24,8 +24,7 @@ import { getBadges, getData, getName } from "../utils/store";
 const ProfileTile = ({ number, text }) => {
   return (
     <Center
-      height={125}
-      width="20"
+      width="24%"
       backgroundColor="white"
       borderRadius="15"
       padding="2"
@@ -35,7 +34,7 @@ const ProfileTile = ({ number, text }) => {
       <Text bold color="#8888D7" fontSize="2xl" textAlign="center">
         {number}
       </Text>
-      <Text color="secondary" fontSize="xs" textAlign="center">
+      <Text color="secondary" fontSize="md" fontWeight="light" textAlign="center">
         {text}
       </Text>
     </Center>
@@ -106,7 +105,7 @@ const Profile = () => {
       <View
         alignItems="center"
         w="100%"
-        pt="20"
+        mt="8"
         // px="4"
       >
         <ProfileAvatar />

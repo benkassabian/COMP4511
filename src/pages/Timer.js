@@ -31,10 +31,8 @@ export default function Timer({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-      <Header heading={"Timer"} navigation={navigation} />
-
-      <VStack safeArea py="2" h="100%" w="100%" mt="2" px="4" space="4">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%"px="4" >
+      <VStack alignContent="center" justifyContent="center" py="2" h="100%" w="100%" mt="2" px="4" space="4">
         <Center w="100%">
           <CountdownCircleTimer
             isPlaying={isPlaying}
@@ -51,10 +49,10 @@ export default function Timer({ navigation }) {
             {({ remainingTime }) => {
               const minutes = Math.floor(remainingTime / 60)
               const seconds = remainingTime % 60
-              return <Text>{minutes}:{seconds < 10 ? '0' : ''}{seconds}</Text>
+              return <Text style={{fontSize: 66, color: "#6666AE"}}>{minutes}:{seconds < 10 ? '0' : ''}{seconds}</Text>
             }}
           </CountdownCircleTimer>
-          <HStack w="100%" justifyContent="center" space={140}>
+          <HStack w="100%" justifyContent="center" space={120}>
             <IconButton variant="ghost" rounded="3xl" size="lg" px="12" py="4" isDisabled={!isReset}
               _icon={{ as: MaterialIcons, name: "add", size: "3xl" }}
               onPress={() => setDuration(duration + 1)}

@@ -1,18 +1,4 @@
-import {
-  Alert,
-  Image,
-  View,
-  Center,
-  Box,
-  Heading,
-  FormControl,
-  Input,
-  Link,
-  Button,
-  Text,
-  VStack,
-  HStack,
-} from "native-base";
+import { Image, Center, Box, Heading, FormControl, Input, Button, Text, VStack, HStack, } from "native-base";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import styles from "../styles/global";
@@ -35,8 +21,7 @@ export default function Calculator({ navigation }) {
   }
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-      <Header heading={"Calculator"} navigation={navigation} />
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4" >
       <VStack safeArea w="100%" px="4" space="4">
         <Heading
           color="black"
@@ -75,7 +60,7 @@ export default function Calculator({ navigation }) {
           </FormControl>
 
         </VStack>
-          <Button size="lg" mt="4" onPress={addTogether}>
+          <Button size="lg" mt="4" rounded="3xl" onPress={addTogether}>
           Calculate
         </Button>
           <Center w="100%">

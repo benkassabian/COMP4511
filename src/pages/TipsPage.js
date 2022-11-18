@@ -40,9 +40,8 @@ export default function TipsPage({ navigation }) {
   }, [refreshing]);
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-    <Header heading={"Tips"} navigation={navigation} />
-    <HStack h="12" mb="4" pr="10">
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4">
+    <HStack h="12" mt="8" mb="6" pr="10">
       <Image h="32"
         source={require("../../assets/VirtualCharacter.png")}
         resizeMode={"contain"}

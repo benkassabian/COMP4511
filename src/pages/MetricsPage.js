@@ -37,9 +37,8 @@ export default function MetricsPage({ navigation }) {
   };
 
   return (
-    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" py="20" px="4" >
-      <Header heading={"Metrics"} />
-      <Box safeArea h="100%" w="100%" px="4" >
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4" >
+      <Box justifyContent="center" h="100%" w="100%" px="4" >
           <Text fontSize="xl" fontWeight="semibold">Daily Water Usage Distribution</Text>
           <Text fontSize="lg">
             Total water used:{" "}

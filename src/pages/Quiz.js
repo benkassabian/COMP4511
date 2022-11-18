@@ -71,7 +71,7 @@ const Quiz = ({ navigation }) => {
   const renderQuestion = () => {
     return (
       <View style={{
-        marginVertical: 40
+        marginVertical: 20
       }}>
         {/* Question Counter */}
         <View style={{
@@ -85,7 +85,7 @@ const Quiz = ({ navigation }) => {
         {/* Question */}
         <Text style={{
           color: COLORS.black,
-          fontSize: 30
+          fontSize: 24
         }}>{allQuestions[currentQuestionIndex]?.question}</Text>
       </View>
     )
@@ -100,7 +100,7 @@ const Quiz = ({ navigation }) => {
             disabled={isOptionsDisabled}
             key={option}
             style={{
-              borderWidth: 3, 
+              borderWidth: 1, 
               borderColor: option==correctOption 
               ? COLORS.success
               : option==currentOptionSelected 
@@ -115,7 +115,7 @@ const Quiz = ({ navigation }) => {
               flexDirection: 'row',
               alignItems: 'center', justifyContent: 'space-between',
               paddingHorizontal: 20,
-              marginVertical: 10
+              marginVertical: 8
             }}
             >
               <Text style={{fontSize: 20, color: COLORS.black}}>{option}</Text>
@@ -159,7 +159,7 @@ const Quiz = ({ navigation }) => {
         <TouchableOpacity
         onPress={handleNext}
         style={{
-          marginTop: 20, width: '100%', backgroundColor: COLORS.accent, padding: 20, borderRadius: 5
+          marginTop: 12, marginBottom: 12, width: '100%', backgroundColor: COLORS.accent, padding: 20, borderRadius: 30
         }}>
           <Text style={{fontSize: 20, color: COLORS.black, textAlign: 'center'}}>Next</Text>
         </TouchableOpacity>
@@ -182,13 +182,13 @@ const Quiz = ({ navigation }) => {
 
       <View style={{
         width: '100%',
-        height: 20,
+        height: 12,
         borderRadius: 20,
         backgroundColor: '#00000020',
 
       }}>
         <Animated.View style={[{
-          height: 20,
+          height: 12,
           borderRadius: 20,
           backgroundColor: COLORS.accent
         },{
@@ -207,24 +207,14 @@ const Quiz = ({ navigation }) => {
 
     
      
-     <SafeAreaView style={{
-       flex: 1
-     }}>
-
-    <Center>
-          <Header heading={"This Week's Quiz"} navigation={navigation} />
-    </Center>
-
+    <Box alignItems="center" bgColor="#F3EAFE" w="100%" h="100%" px="4" pt="6">
+      <Header heading={"This Week's Quiz"} navigation={navigation} />
+      <VStack p="2" h="100%" w="100%" px="4">
        <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
        <View style={{
          flex: 1,
-         paddingVertical: 40,
          paddingHorizontal: 16,
-         backgroundColor: COLORS.background,
-         position:'relative'
        }}>
-
-    
 
          {/* ProgressBar */}
          { renderProgressBar() }
@@ -254,7 +244,7 @@ const Quiz = ({ navigation }) => {
                backgroundColor: COLORS.white,
                width: '90%',
                borderRadius: 20,
-               padding: 20,
+               padding: 10,
                alignItems: 'center'
              }}>
                <Text style={{fontSize: 30, fontWeight: 'bold'}}>{ score> (allQuestions.length/2) ? 'Congratulations!' : 'Oops!' }</Text>
@@ -278,7 +268,7 @@ const Quiz = ({ navigation }) => {
                onPress={restartQuiz}
                style={{
                  backgroundColor: COLORS.accent,
-                 padding: 20, width: '100%', borderRadius: 20
+                 padding: 10, width: '100%', borderRadius: 20
                }}>
                  <Text style={{
                    textAlign: 'center', color: COLORS.black, fontSize: 20
@@ -291,23 +281,27 @@ const Quiz = ({ navigation }) => {
          </Modal>
 
          {/* Background Image */}
+         <Center>
+
         <Image
         source={require('../../assets/VirtualCharacter.png')}
         style={{
           width: SIZES.width,
           height: 130,
           zIndex: -1,
-          position: 'absolute',
+          position: 'center',
           bottom: 0,
           left: 0,
           right: 0,
-          opacity: 1
+          opacity: 1,
         }}
         resizeMode={'contain'}
         />
+         </Center>
 
        </View>
-     </SafeAreaView>
+       </VStack>
+     </Box>
   )
 }
 
