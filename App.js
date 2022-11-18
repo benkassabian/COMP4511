@@ -34,17 +34,6 @@ import CalculatorSettings from "./src/pages/Settings/Calculator";
 import Metrics from "./src/pages/MetricsPage";
 import Profile from "./src/pages/Profile";
 
-// const HomePage = () => {
-//   return (
-//     <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveTintColor: "#8888D7", headerShown: true }}>
-//       <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
-//       <Tab.Screen name="Metrics" component={MetricsPage} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
-//       <Tab.Screen name="Profile" component={Profile} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
-//       <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
-//     </Tab.Navigator>
-//   );
-// };
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -55,14 +44,6 @@ const screenOptionStyle = {
   headerTintColor: "black",
   headerBackTitle: "Back",
 };
-
-// const GameScreenOptionStyle = {
-//   headerStyle: {
-//     backgroundColor: "#F3EAFE",
-//   },
-//   headerTintColor: "black",
-//   headerBackTitle: "Back to Games",
-// };
 
 // games stack
 const GamesStackNavigator = () => {
@@ -122,14 +103,32 @@ const ProfileStackNavigator = () => {
 // tabs
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={HomeStackNavigator} />
-      <Tab.Screen name="Metrics" component={MetricsStackNavigator} />
-      <Tab.Screen name="Profile" component={ProfileStackNavigator} />
-      <Tab.Screen name="Settings" component={SettingsStackNavigator} />
+    <Tab.Navigator initialRouteName="Home" 
+      screenOptions={{ 
+        tabBarActiveTintColor: "#8888D7", 
+        // tabBarIcon: {size: 20}, 
+        tabBarStyle: {height: 86, paddingTop: 6},
+        tabBarLabelStyle: {fontSize: 16 },
+        headerShown: false 
+        }} >
+      <Tab.Screen name="Home" component={HomeStackNavigator} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
+      <Tab.Screen name="Metrics" component={MetricsStackNavigator} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
+      <Tab.Screen name="Profile" component={ProfileStackNavigator} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
+      <Tab.Screen name="Settings" component={SettingsStackNavigator} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
     </Tab.Navigator>
   );
 };
+
+// const HomePage = () => {
+//   return (
+//     <Tab.Navigator initialRouteName="Home" screenOptions={{ tabBarActiveTintColor: "#8888D7", headerShown: true }}>
+//       <Tab.Screen name="Home" component={Home} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="home" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Metrics" component={MetricsPage} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="insert-chart-outlined" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Profile" component={Profile} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="person-outline" color={color} size={size} />) }}/>
+//       <Tab.Screen name="Settings" component={Settings} options={{ tabBarIcon: ({ color, size }) => (<MaterialIcons name="settings" color={color} size={size} />) }}/>
+//     </Tab.Navigator>
+//   );
+// };
 
 // startup
 const StartStackNavigator = () => {
