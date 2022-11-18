@@ -5,7 +5,7 @@
 * After cloning the repo, please run these commands in the following order:
 
   ```sh
-  npx yarn
+  yarn
   ```
     ```sh
   npx expo start
